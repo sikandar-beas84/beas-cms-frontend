@@ -51,9 +51,7 @@ const page = ({skills}) => {
                 <Row>
                     <Col xs={12} className='text-center mb-5'>
                     {<div dangerouslySetInnerHTML={{ __html: skills?.menu_contents?.description }} />}
-                    
                     </Col>
-                    
                 </Row>
             </Container>
         </section>
