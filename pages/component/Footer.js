@@ -67,13 +67,13 @@ const Footer = ({homeData}) => {
                      );
                 }else {
                   return (
-                    item.slug !== "service" && item.slug !== "industries" && (
+                    //item.slug !== "service" && item.slug !== "industries" && (
                       <li style={{ listStyleType: 'none' }} key={index}>
                         <Nav.Link href={`/${item.slug}`} style={{ color: 'white' }}>
                           {item.name}
                         </Nav.Link>
                       </li>
-                    )
+                    //)
                     );
                 }
               })}

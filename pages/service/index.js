@@ -37,12 +37,12 @@ const page = ({services, service}) => {
       <main>
         <BreadCrumb pagetitle="Service Page" />
         <Container className='py-5'>
-          <Row>
+          {/* <Row>
             <Col>
               <p className='title mb-3'>Service Page</p>
               <p>Holisticly benchmark functional products before excellent methods of empowerment. Seamlessly visualize innovative web-readiness whereas extensive initiatives. Completely unleash frictionless data via end-to-end services. Continually unleash virtual e-tailers through magnetic core competencies. Interactively engage distributed alignments via focused alignments. Dynamically fabricate excellent innovation for go forward technology. Intrinsicly impact empowered scenarios after cost effective outsourcing. Synergistically productivate pandemic e-business rather than state of the art e-tailers. Continually expedite customized information with go forward potentialities.</p>
             </Col>
-          </Row>
+          </Row> */}
 
 
           <Row className='mt-4'>

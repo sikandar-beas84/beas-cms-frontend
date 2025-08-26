@@ -49,7 +49,7 @@ const Header = ({homeData}) => {
               <Col>
                 <Navbar collapseOnSelect expand="lg">
 
-                  <Navbar.Brand href="#home"><img src={`${env.BACKEND_BASE_URL}${homeData?.logo?.image}`} alt="logo" className='img-fluid'/></Navbar.Brand>
+                  <Navbar.Brand href={env.SITE_URL}><img src={`${env.BACKEND_BASE_URL}${homeData?.logo?.image}`} alt="logo" className='img-fluid'/></Navbar.Brand>
                   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                   <Navbar.Collapse id="responsive-navbar-nav">
                     
