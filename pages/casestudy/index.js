@@ -1,43 +1,55 @@
 
-import React, { useState } from 'react'
+import React from 'react'
 import BreadCrumb from '../component/BreadCrumb'
 import { Container, Row, Col } from 'react-bootstrap'
-import Accordion from 'react-bootstrap/Accordion';
-import { ArrowRight, ArrowUp, ArrowUpRight } from 'react-feather';
+import Image from 'next/image';
+import HomeService from '../services/Home';
+import { env } from '../constants/common';
+import Link from 'next/link';
+import SEO from '../../components/SEO';
+import { useRouter } from 'next/router';
 
-
-const page = () => {
+const page = ({casestudy}) => {
+  const router = useRouter();
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
-      <BreadCrumb pagetitle = "Case Study" />
-      <Container className='py-5'>
-        <Row>
+    <SEO
+      title={`Case Study | ${casestudy?.title}`}
+      description={
+        casestudy?.title ||
+        `${casestudy?.title} - Learn how Beas Consultancy delivered a tailored solution and business impact.`
+      }
+      keywords={
+        casestudy?.title || 
+        "case study, business solution, project success, Beas consultancy"
+      }
+      image={
+        casestudy?.image 
+          ? `${env.BACKEND_BASE_URL}${casestudy.image}`
+          : `${env.BACKEND_BASE_URL}/default-image.jpg`
+      }
+      url={`${env.FRONTEND_BASE_URL}/casestudy/${casestudy?.slug}`}
+      author="Beas Consultancy & Services Pvt. Ltd."
+    />
+    <main>
+      <BreadCrumb pagetitle = {casestudy.title} pageslug='Casestudy' />
+      
+      <Container className="py-5">
+        <Row>  
           <Col xs={12} lg={5}>
-            {/* <div className='service-left-panel'>
-              <p className='title'>Our Services</p>
-              <ul>
-                <li>Application Development <span><ArrowRight /></span></li>
-                <li>Mobile Apps Development <span><ArrowRight /></span></li>
-                <li>Cloud Computing <span><ArrowRight /></span></li>
-                <li>Application Maintenance <span><ArrowRight /></span></li>
-                <li>Offshore Development Center <span><ArrowRight /></span></li>
-                <li>Professional Services <span><ArrowRight /></span></li>
-              </ul>
-            </div> */}
+            
              <div className='serviceDetailsWrap'>
-              <img src='/assets/images/service-details.jpg' alt='image' className='img-fluid' />
+              <Image width={600} height={150} src={`${env.BACKEND_BASE_URL}${casestudy?.image}`} alt='image' className='img-fluid' />
             </div>
             <div className='service-left-panel vertical-box my-3'>
               <p className='title'>Technology Platform</p>
               <ul>
-                <li><img src='assets/images/software-logo-img.webp' alt='software-logo' className='casestudies-logo'/></li>
-                <li><img src='assets/images/software-logo-img.webp' alt='software-logo' className='casestudies-logo'/></li>
-                <li><img src='assets/images/software-logo-img.webp' alt='software-logo' className='casestudies-logo'/></li>
-                <li><img src='assets/images/software-logo-img.webp' alt='software-logo' className='casestudies-logo'/></li>
-                <li><img src='assets/images/software-logo-img.webp' alt='software-logo' className='casestudies-logo'/></li>
-                <li><img src='assets/images/software-logo-img.webp' alt='software-logo' className='casestudies-logo'/></li>
-                <li><img src='assets/images/software-logo-img.webp' alt='software-logo' className='casestudies-logo'/></li>
-                <li><img src='assets/images/software-logo-img.webp' alt='software-logo' className='casestudies-logo'/></li>
+                { casestudy?.technology_platform?.map((item, index)=>(
+                <li key={index}>{item}</li>
+                ))}
               </ul>
             </div>
             <div className='service-left-panel blue-box'>
@@ -48,90 +60,32 @@ const page = () => {
           <Col xs={12} lg={7}>
            
             <p className='title mb-3'>Project Overview / Business Need</p>
-            <p>Holisticly benchmark functional products before excellent methods of empowerment. Seamlessly visualize innovative web-readiness whereas extensive initiatives. Completely unleash frictionless data via end-to-end services. Continually unleash virtual e-tailers through magnetic core competencies. Interactively engage distributed alignments via focused alignments. Dynamically fabricate excellent innovation for go forward technology. Intrinsicly impact empowered scenarios after cost effective outsourcing. Synergistically productivate pandemic e-business rather than state of the art e-tailers. Continually expedite customized information with go forward potentialities.</p>
-            {/* <div className='project-service'>
-              <Row>
-                <Col xs={12} lg={6}>
-                  <div className='project-overview-list-img'>
-                    <img src='/assets/images/flowchart.webp' alt='image' className='img-fluid'/>
-                  </div>
-                </Col>
-                <Col xs={12} lg={6}>
-                  <div className='project-overview-list'>
-                    <p className='title'>Service Features</p>
-                    <ul>
-                      <li> We Provide Flexible IT Services </li>
-                      <li> We Provide Flexible IT Services </li>
-                      <li> We Provide Flexible IT Services </li>
-                      <li> We Provide Flexible IT Services </li>
-                      <li> We Provide Flexible IT Services </li>
-                      <li> We Provide Flexible IT Services </li>
-                    </ul>
-                  </div>
-
-                </Col>
-              </Row>
-            </div> */}
+            {<div dangerouslySetInnerHTML={{ __html: casestudy?.business_need }} />}
             <p className='title my-3'>BEAS’s Solution</p>
-            <p>Holisticly benchmark functional products before excellent methods of empowerment. Seamlessly visualize innovative web-readiness whereas extensive initiatives. Completely unleash frictionless data via end-to-end services. Continually unleash virtual e-tailers through magnetic core competencies. Interactively engage distributed alignments via focused alignments. Dynamically fabricate excellent innovation for go forward technology. Intrinsicly impact empowered scenarios after cost effective outsourcing. Synergistically productivate pandemic e-business rather than state of the art e-tailers. Continually expedite customized information with go forward potentialities.</p>
-           
+            {<div dangerouslySetInnerHTML={{ __html: casestudy?.beas_solution }} />}
             <p className='title my-3'>Benefits to the customer</p>
-            <p>Holisticly benchmark functional products before excellent methods of empowerment. Seamlessly visualize innovative web-readiness whereas extensive initiatives. Completely unleash frictionless data via end-to-end services. Continually unleash virtual e-tailers through magnetic core competencies. Interactively engage distributed alignments via focused alignments. Dynamically fabricate excellent innovation for go forward technology. Intrinsicly impact empowered scenarios after cost effective outsourcing. Synergistically productivate pandemic e-business rather than state of the art e-tailers. Continually expedite customized information with go forward potentialities.</p>
-             {/* <Accordion defaultActiveKey="0">
-              <Accordion.Item eventKey="0">
-                <Accordion.Header className='acc-title'>Business Need</Accordion.Header>
-                <Accordion.Body>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat. Duis aute irure dolor in
-                  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum.
-                </Accordion.Body>
-              </Accordion.Item>
-              <Accordion.Item eventKey="1">
-                <Accordion.Header className='acc-title'>BEAS's Solution</Accordion.Header>
-                <Accordion.Body>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat. Duis aute irure dolor in
-                  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum.
-                </Accordion.Body>
-              </Accordion.Item>
-              <Accordion.Item eventKey="2">
-                <Accordion.Header className='acc-title'>Benefits to the customer</Accordion.Header>
-                <Accordion.Body>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat. Duis aute irure dolor in
-                  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum.
-                </Accordion.Body>
-              </Accordion.Item>
-              <Accordion.Item eventKey="3">
-                <Accordion.Header className='acc-title'>Technology Platform</Accordion.Header>
-                <Accordion.Body>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat. Duis aute irure dolor in
-                  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum.
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion> */}
+            {<div dangerouslySetInnerHTML={{ __html: casestudy?.benefits_to_the_customer }} />}
           </Col>
+          
         </Row>
       </Container>
+    </main>
     </>
   )
 }
 
 export default page
+
+export async function getServerSideProps({ query  }) {
+  const { id } = query ;
+
+  const response = await HomeService.individualProjectPage(id);
+  const casestudy = response.data?.casestudy || [];
+
+  return {
+    props: {
+      casestudy,
+      id
+    },
+  };
+}

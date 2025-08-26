@@ -30,7 +30,7 @@ const career = ({careers, menucareer}) => {
         url={`${env.BACKEND_BASE_URL}${menucareer?.slug || 'career'}`}
       />
       <main>
-        <BreadCrumb pagetitle="Career" />
+        <BreadCrumb pagetitle="Career" pageBanner={`assets/img/menu-content/${menucareer?.menu_contents?.banner}`} />
         <Container className='py-5'>
           <Row>
             <Col>

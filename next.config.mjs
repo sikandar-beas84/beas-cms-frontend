@@ -1,13 +1,14 @@
+import { env } from './pages/constants/common.js';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
 
   images: {
-    domains: ['127.0.0.1'],
+    domains: [env.BACKEND_DOMAIN],
     remotePatterns: [
       {
         protocol: 'http',
-        hostname: '127.0.0.1',
+        hostname: env.BACKEND_DOMAIN,
         port: '8000',
         pathname: '/assets/img/**',
       },

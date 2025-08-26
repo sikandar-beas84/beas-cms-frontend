@@ -67,3 +67,92 @@ const Globe = ({ width = 800, height = 800 }) => {
 };
 
 export default Globe;
+
+// components/Globe.js
+// import React, { useEffect, useRef } from 'react';
+// import * as d3 from 'd3';
+
+// const Globe = ({ width = 800, height = 800 }) => {
+//     const svgRef = useRef(null);
+
+//     useEffect(() => {
+//         if (typeof window === 'undefined') return;
+
+//         const svg = d3.select(svgRef.current)
+//             .attr('width', width)
+//             .attr('height', height)
+//             .style('background', 'white');
+
+//         const projection = d3.geoOrthographic()
+//             .scale(Math.min(width, height) / 2.1)
+//             .translate([width / 2, height / 2])
+//             .rotate([0, -30]);
+
+//         const path = d3.geoPath().projection(projection);
+
+//         // Draw ocean sphere
+//         svg.append('path')
+//             .datum({ type: 'Sphere' })
+//             .attr('class', 'globe')
+//             .attr('d', path)
+//             .attr('fill', '#d0f0ff')
+//             .attr('stroke', '#999')
+//             .attr('stroke-width', 0.5);
+
+//         // Load GeoJSON
+//         d3.json('/data/countries.geo.json')
+//             .then(data => {
+//                 console.log('Loaded countries:', data.features.length);
+
+//                 // Draw countries
+//                 svg.selectAll('.country')
+//                     .data(data.features)
+//                     .enter().append('path')
+//                     .attr('class', 'country')
+//                     .attr('d', path)
+//                     .attr('fill', '#cccccc')
+//                     .attr('stroke', '#333')
+//                     .attr('stroke-width', 0.5);
+
+//                 // Add labels (initially invisible)
+//                 svg.selectAll('.label')
+//                     .data(data.features)
+//                     .enter().append('text')
+//                     .attr('class', 'label')
+//                     .attr('text-anchor', 'middle')
+//                     .attr('font-size', 8)
+//                     .attr('fill', 'black')
+//                     .style('pointer-events', 'none')
+//                     .text(d => d.properties.name);
+
+//                 // Rotation animation
+//                 const timer = d3.timer((elapsed) => {
+//                     projection.rotate([elapsed * 0.02, -30]);
+
+//                     // Update paths
+//                     svg.selectAll('.globe').attr('d', path);
+//                     svg.selectAll('.country').attr('d', path);
+
+//                     // Update label positions & visibility
+//                     svg.selectAll('.label')
+//                         .attr('transform', d => {
+//                             const c = path.centroid(d);
+//                             return `translate(${c[0]}, ${c[1]})`;
+//                         })
+//                         .style('opacity', d => {
+//                             const center = projection.invert([width / 2, height / 2]); // center lat/long
+//                             const centroid = d3.geoCentroid(d);
+//                             return d3.geoDistance(center, centroid) < Math.PI / 2 ? 1 : 0; // visible if front-facing
+//                         });
+//                 });
+
+//                 return () => timer.stop();
+//             })
+//             .catch(err => console.error('Error loading country names:', err));
+
+//     }, [width, height]);
+
+//     return <svg ref={svgRef}></svg>;
+// };
+
+// export default Globe;

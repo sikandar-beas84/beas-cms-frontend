@@ -110,7 +110,7 @@ const page = ({career, menucareer}) => {
         author="Beas Consultancy & Services Pvt. Ltd."
       />
       <main>
-        <BreadCrumb pagetitle = {career.title} pageslug='Career' /> 
+        <BreadCrumb pagetitle = {career.title} pageslug='Career' pageBanner={`assets/img/menu-content/${menucareer?.menu_contents?.banner}`} /> 
         <Container className='py-5'>
           <Row>
             <Col xs={12} lg={12}>

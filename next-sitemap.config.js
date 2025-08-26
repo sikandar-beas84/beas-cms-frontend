@@ -1,6 +1,7 @@
+
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-    siteUrl: 'http://127.0.0.1:8000',
+    siteUrl: 'http://192.168.1.111:3000',
     generateRobotsTxt: true, // (optional)
     sitemapSize: 5000,
     changefreq: 'daily',

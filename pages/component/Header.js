@@ -65,9 +65,14 @@ const Header = ({homeData}) => {
                       </NavDropdown>
 
                       {/* Services dropdown with recursion */}
-                    <NavDropdown title="Services" id="collapsible-nav-dropdown" className="services-dropdown">
+                      <NavDropdown title="Services" id="collapsible-nav-dropdown">
+                        { homeData?.services?.children?.map((item, index)=>(
+                          <NavDropdown.Item href={`/service/${item.slug}`} key={index}> {item.name}</NavDropdown.Item>
+                        ))}
+                      </NavDropdown>
+                    {/* <NavDropdown title="Services" id="collapsible-nav-dropdown" className="services-dropdown">
                       <RecursiveDropdown items={homeData?.services?.children} />
-                    </NavDropdown>
+                    </NavDropdown> */}
                     
                       {homeData?.menus?.slice(4, 9).map((item, index) => {
                         if (item.slug === 'casestudy') {

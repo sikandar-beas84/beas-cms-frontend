@@ -43,7 +43,7 @@ const page = ({aboutus, experts}) => {
             />
 
             <main>
-                <BreadCrumb pagetitle="About Us" />
+                <BreadCrumb pagetitle="About Us" pageBanner={`assets/img/menu-content/${aboutus?.menu_contents?.banner}`} />
                 <Container className='py-5'>
                     <Row>
                         <Col>
@@ -87,7 +87,7 @@ const page = ({aboutus, experts}) => {
                         </Row>
                     </Container>
                 </section>
-                <Container className='py-5'>
+                {/* <Container className='py-5'>
                     <Row>
                         <Col xs={12} className='mb-3'>
                             <div className="aboutTxt">
@@ -113,7 +113,7 @@ const page = ({aboutus, experts}) => {
                         )) }
 
                     </Row>
-                </Container>
+                </Container> */}
             </main>
         </>
     )

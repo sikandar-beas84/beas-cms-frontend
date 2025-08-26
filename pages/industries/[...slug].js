@@ -49,22 +49,29 @@ const page = ({industry, enrichedContents}) => {
                                         item?.casestudy?.data?.casestudy?.slug ? (
 
                                         <React.Fragment key={index}>
-                                            <Col xs={12} lg={3} className="d-flex px-0">
+                                            <Col xs={12} lg={3} className="d-flex px-0" style={{height:'200px'}}>
                                                 <div className='imageBlock d-flex'>
                                                     <Image width={550} height={50} src={`${env.BACKEND_BASE_URL}${item?.casestudy?.data?.casestudy?.image}`} alt='image' className='img-fluid' />
                                                 </div>
                                             </Col>
-                                            <Col xs={12} lg={3} className="d-flex pxx-0">
+                                            <Col xs={12} lg={3} className="d-flex pxx-0" style={{height:'200px'}}>
                                                 <div className='textBlock d-flex speechBubble'>
                                                     <div>
                                                         <p>
                                                             {item?.casestudy?.data?.casestudy?.title}
                                                     </p>
                                                     {item?.casestudy?.data?.casestudy?.slug ? (
+                                                        // <Link
+                                                        //     href={`/casestudy/${item?.casestudy?.data?.casestudy?.slug}`}
+                                                        //     className="btn btn-outline-primary ms-auto"
+                                                        // >
                                                         <Link
-                                                            href={`/casestudy/${item?.casestudy?.data?.casestudy?.slug}`}
+                                                            href={{
+                                                                pathname: "/casestudy",
+                                                                query: { id: item?.casestudy?.data?.casestudy?.id },
+                                                            }}
                                                             className="btn btn-outline-primary ms-auto"
-                                                        >
+                                                            >
                                                             <ArrowUpRight />
                                                         </Link>
                                                         ) : (

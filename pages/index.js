@@ -11,7 +11,7 @@ import Globe from "./component/Globe";
 import { motion, useScroll, useTransform } from 'framer-motion';
 import LogoZoom from "./component/LogoZoom";
 import { HealthIcon } from "./SVGIcons";
-
+import Nav from 'react-bootstrap/Nav';
 import HomeService from "./services/Home";
 import { env } from './constants/common';
 
@@ -146,44 +146,38 @@ export default function Home({homeData}) {
               <div style={{color:'white'}} dangerouslySetInnerHTML={{ __html: homeData?.services?.description }} />
               </Col>
             </Row>
-            <Row className="mt-5">
-              <Col xs={12} lg={12}>
-                <Row className="service-box">
-                { homeData?.services?.children?.map((item, index)=>(
 
-                  <Col xs={12} lg={4} className="px-0" key={index}>
-                    <div className="service-wrap">
-                      <div className="service-wrap__header">
-                        <Image 
-                        width={600} 
-                        height={100} 
-                        src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.icon}`} 
-                        className="img-fluid" 
-                        alt="image" 
-                        style={{
-                          filter: 'opacity(0.5) drop-shadow(0 0 0 white) brightness(7.5)',
-                        }}
-                        />
-                        <p>{item.name}</p>
-                      </div>
-                      <div className="service-wrap__txt">
-                      <div dangerouslySetInnerHTML={{ __html: item?.description?.split(' ').slice(0, 15).join(' ')+'...' }} />
-                      <Link href={`/service/${item?.slug}`} style={{ cursor: "pointer", color:'white' }}>
-                          <ArrowUpRight />
-                      </Link>
-                      </div>
-                      
+            <Row className="mt-5 service-box">
+            { homeData?.services?.children?.map((item, index)=>{
+              const descriptionText = item?.description
+              ? item.description.split(" ").slice(0, 15).join(" ") + "..."
+              : "";
+              return (
+                <Col lg={4} key={index}>
+                  <div className="service-wrap" >
+                    <div className="service-wrap__header">
+                      <Image 
+                      width={600} 
+                      height={100} 
+                      src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.icon}`} 
+                      className="img-fluid" 
+                      alt="image" 
+                      style={{
+                        filter: 'opacity(0.5) drop-shadow(0 0 0 white) brightness(7.5)',
+                      }}
+                      />
+                      <p>{item.name}</p>
                     </div>
-                  </Col>
-                ))}
-                </Row>
-              </Col>
-
-
-            </Row>
-
+                    <div className="service-wrap__txt">
+                      {/* <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: descriptionText }} /> */}
+                        <Nav.Link href={`/service/${item.slug}`}  style={{ cursor: "pointer", color: 'white !important' }}><ArrowUpRight /></Nav.Link>
+                    </div>
+                  </div>
+                </Col>
+              );
+            })}
+            </Row>        
           </Container>
-
         </section>
         <section className="pad-top-50">
           <Container className="position-relative">
@@ -210,14 +204,9 @@ export default function Home({homeData}) {
                           </div>
                           </Link>
                         </li>
-                      ))}
-                      
+                      ))}                
                       </ul>
-
                     </Col>
-
-
-
                   </Row>
                 </div>
               </Col>
@@ -237,8 +226,6 @@ export default function Home({homeData}) {
 
                     </Row>
                   </Container>
-
-
                 </div>
               </Col>
             </Row>
@@ -280,9 +267,6 @@ export default function Home({homeData}) {
                         </ul>
                     </div>
                   </div>
-
-
-
                 </div>
               </Col>
             </Row>
@@ -301,7 +285,7 @@ export default function Home({homeData}) {
                 </div>
               </Col>
 
-              <Col xs={12} lg={3}><p className="link-txt tt-right">View All <ArrowUpRight /></p></Col>
+              {/* <Col xs={12} lg={3}><p className="link-txt tt-right">View All <ArrowUpRight /></p></Col> */}
             </Row>
             <Row>
               <BannerCarousal page="projects" projects={homeData?.projects} />
@@ -312,8 +296,7 @@ export default function Home({homeData}) {
         <section className="pad-top-50">
           <Container>
             <Row>
-              <Col xs={12} xl={6}>
-                
+              <Col xs={12} xl={6}>            
                 <div className="globe-wrap">
                   <Globe width={600} height={600} />
                 </div>
@@ -323,9 +306,7 @@ export default function Home({homeData}) {
                   <p className="sub-title mb-1">Client Feedback</p>
                   <p className="mb-2">What Our Clients Say</p>
                   <BannerCarousal page="testimonial" testimonials={homeData?.testimonials} />
-
                 </div>
-
               </Col>
             </Row>
           </Container>

@@ -997,7 +997,6 @@ footer ul li {
   padding: 100px 50px;
 }
 .breadcrumbBg {
-  background-image: linear-gradient(rgba(14, 19, 51, 0.5), rgba(14, 19, 51, 0.5)), url(/images/breadcrumb-banner.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   margin-top: 80px;

@@ -34,7 +34,8 @@ const page = ({skills}) => {
                 <Col>
                     <div className="aboutusTxt">
 
-                        <Image width={450} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${skills?.menu_contents?.image}`} className="img-fluid" alt="image" />
+                        {/* <Image width={450} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${skills?.menu_contents?.image}`} className="img-fluid" alt="image" />
+                         */}
                         <div className="aboutTxt">
                             <p className="sub-title">Specality Of Our Company</p>
                             <p>{skills?.menu_contents?.title}</p>
