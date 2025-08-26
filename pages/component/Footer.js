@@ -45,14 +45,14 @@ const Footer = ({homeData}) => {
 
             <Col xs={12} lg={3} className='mb-md-2 mb-lg-0'>
               <p>Services</p>
-              <RecursiveDropdown items={homeData?.services?.children} />
-              {/* <ul>
+              {/* <RecursiveDropdown items={homeData?.services?.children} /> */}
+              <ul>
               { homeData?.services?.children?.map((item, index)=>(
                 <li style={{listStyleType:'none'}} key={index}>
                 <Nav.Link href={`/service/${item.slug}`}  style={{ color: 'white !important' }}>{item.name}</Nav.Link>
                 </li>
               ))}
-              </ul> */}
+              </ul>
             </Col>
             <Col xs={12} lg={2}>
               <p>Explore</p>

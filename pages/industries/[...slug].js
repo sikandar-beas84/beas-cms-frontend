@@ -49,12 +49,12 @@ const page = ({industry, enrichedContents}) => {
                                         item?.casestudy?.data?.casestudy?.slug ? (
 
                                         <React.Fragment key={index}>
-                                            <Col xs={12} lg={3} className="d-flex px-0" style={{height:'200px'}}>
+                                            <Col xs={12} lg={2} className="d-flex px-0" style={{height:'200px'}}>
                                                 <div className='imageBlock d-flex'>
                                                     <Image width={550} height={50} src={`${env.BACKEND_BASE_URL}${item?.casestudy?.data?.casestudy?.image}`} alt='image' className='img-fluid' />
                                                 </div>
                                             </Col>
-                                            <Col xs={12} lg={3} className="d-flex pxx-0" style={{height:'200px'}}>
+                                            <Col xs={12} lg={2} className="d-flex pxx-0" style={{height:'200px'}}>
                                                 <div className='textBlock d-flex speechBubble'>
                                                     <div>
                                                         <p>
