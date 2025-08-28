@@ -28,29 +28,61 @@ const Globe = ({ width = 800, height = 800 }) => {
                 .datum({ type: 'Sphere' })
                 .attr('class', 'globe')
                 .attr('d', path)
-                .attr('fill', 'white')  // Set globe background to white
-                .attr('stroke', 'lightgrey')  // Set globe border to light grey
+                .attr('fill', '#d0f0ff')  // light ocean blue
+                .attr('stroke', '#999')  
                 .attr('stroke-width', 0.5);
 
             // Load and display the world map using d3.json
-            d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json').then(worldData => {
-                const countries = topojson.feature(worldData, worldData.objects.countries);
+            d3.json('/data/countries-110m.json').then(worldData => {
+                //const countries = topojson.feature(worldData, worldData.objects.countries);
 
+                // Convert topojson to geojson
+                const geo = topojson.feature(worldData, worldData.objects.countries);
+
+                // Make sure geo.features exists and is an array
+                let countries = Array.isArray(geo.features) ? geo.features : [];
+                
                 svg.selectAll('.country').remove();  // Remove previous countries if any
                 svg.selectAll('.country')
-                    .data(countries.features)
+                    //.data(countries.features)
+                    .data(countries)
                     .enter().append('path')
                     .attr('class', 'country')
                     .attr('d', path)
-                    .attr('fill', 'lightgrey')  // Set country fill color to light grey
-                    .attr('stroke', 'white');  // Set country border color to white
+                    .attr('fill', 'lightgreen')  // Set country fill color to light green
+                    .attr('stroke', '#333');  // Set country border color to white
+                
+                // Add labels only for selected countries
+                const labeledCountries = ["India", "United States of America", "Netherlands", "Nigeria", "Bhutan", "South Africa", "China"];
+                svg.selectAll('.label').remove();
+                svg.selectAll('.label')
+                    //.data(countries.features)
+                    .data(countries.filter(d => labeledCountries.includes(d.properties.name)))
+                    .enter().append('text')
+                    .attr('class', 'label')
+                    .attr('text-anchor', 'middle')
+                    .attr('font-size', 10)
+                    .attr('fill', 'red')
+                    .attr('transform', d => {
+                        const c = path.centroid(d);
+                        if (!c || isNaN(c[0]) || isNaN(c[1])) return "translate(-999, -999)"; // hide if invalid
+                        return `translate(${c[0]}, ${c[1]})`;
+                    })
+                    .text(d => d.properties.name);
             });
 
             // Rotate the globe
             const rotateGlobe = () => {
                 d3.timer(() => {
                     projection.rotate([Date.now() * 0.02 % 360, -30]); // Rotate based on time
-                    svg.selectAll('path').attr('d', path);
+                    //svg.selectAll('path').attr('d', path);
+                    svg.selectAll('.globe').attr('d', path);
+                    svg.selectAll('.country').attr('d', path);
+                    svg.selectAll('.label')
+                        .attr('transform', d => {
+                            const c = path.centroid(d);
+                            return (!c || isNaN(c[0]) || isNaN(c[1])) ? "translate(-999,-999)" : `translate(${c[0]}, ${c[1]})`;
+                        });
                 });
             };
 

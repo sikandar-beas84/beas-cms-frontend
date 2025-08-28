@@ -81,11 +81,11 @@ export default function Home({homeData}) {
             <Row>
               <Col xs={12} lg={6}>
                 <div className="aboutImg">
-                  <Image width={450} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${homeData?.aboutus?.menu_contents.image}`} alt="image" className="img-fluid" />
-                  <Image width={250} height={50} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${homeData?.aboutus?.menu_contents.icon}`} alt="image" className="img-fluid" />
+                  <Image width={450} height={380} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${homeData?.aboutus?.menu_contents.image}`} alt="image" />
+                  <Image width={250} height={180} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${homeData?.aboutus?.menu_contents.icon}`} alt="image" />
                   <div className="experience-year">
                     <div className="experience-year__icon">
-                      <Image width={600} height={100} src="/assets/images/trophy.png" alt="image" className="img-fluid" />
+                      <Image width={600} height={100} src="/assets/images/trophy.png" alt="image" />
                     </div>
                     <div className="experience-year__content">
                       <h6 className="circle rotateText">
@@ -154,25 +154,25 @@ export default function Home({homeData}) {
               : "";
               return (
                 <Col lg={4} key={index}>
-                  <div className="service-wrap" >
-                    <div className="service-wrap__header">
-                      <Image 
-                      width={600} 
-                      height={100} 
-                      src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.icon}`} 
-                      className="img-fluid" 
-                      alt="image" 
-                      style={{
-                        filter: 'opacity(0.5) drop-shadow(0 0 0 white) brightness(7.5)',
-                      }}
-                      />
-                      <p>{item.name}</p>
+                  <Nav.Link href={`/service/${item.slug}`}  style={{ cursor: "pointer", color: 'white !important' }}>
+                    <div className="service-wrap d-flex flex-column" >
+                      <div className="service-wrap__header">
+                        <Image 
+                        width={600} 
+                        height={100} 
+                        src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.icon}`} 
+                        className="img-fluid" 
+                        alt="image" 
+                        style={{
+                          filter: 'opacity(0.5) drop-shadow(0 0 0 white) brightness(7.5)',
+                        }}
+                        />
+                        <p>{item.name}</p>
+                      </div>
+                      <div><ArrowUpRight /></div>
+                      
                     </div>
-                    <div className="service-wrap__txt">
-                      {/* <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: descriptionText }} /> */}
-                        <Nav.Link href={`/service/${item.slug}`}  style={{ cursor: "pointer", color: 'white !important' }}><ArrowUpRight /></Nav.Link>
-                    </div>
-                  </div>
+                  </Nav.Link>
                 </Col>
               );
             })}
@@ -192,7 +192,7 @@ export default function Home({homeData}) {
                       <ul className="service-block">
                       { homeData?.industries?.children?.map((item, index)=>(
                         <li key={index}>
-                          <Link href={`/industries/${item.slug}`} style={{ cursor: "pointer" }}>
+                          <Link href={`/industries/${item.slug}`} style={{ cursor: "pointer", textDecoration:'none', color:'cadetblue', fontWeight:'800' }}>
                           <div className="industy-block __list">
                             <div className="industy-block __top">
                               <Image width={600} height={100} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.icon}`} alt="image" className="img-fluid" />

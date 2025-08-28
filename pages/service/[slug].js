@@ -40,7 +40,7 @@ const page = ({service, enrichedChildren }) => {
                 url={metaUrl}
             />
             <main>
-                <BreadCrumb pagetitle={service?.name} pageslug='Service' />
+                <BreadCrumb pagetitle={service?.name} pageslug='Service' pageBanner={`assets/img/menu-content/${service?.menu_contents?.banner}`} />
                 <Container className='py-5'>
                 {enrichedChildren?.map((item1, index1) => (
                 <Row key={index1}>
@@ -52,18 +52,18 @@ const page = ({service, enrichedChildren }) => {
                                 {item1?.menu_contents?.contents?.map((content, index) =>
                                 content?.extra_description ? (
                                     <React.Fragment key={index}>
-                                        <Col xs={12} lg={2} className="d-flex px-0" style={{height:'200px'}}>
+                                        <Col xs={12} lg={2} className="d-flex px-0" style={{height:'225px'}}>
                                             <div className='imageBlock d-flex'>
                                                 <Image width={550} height={50} src={`${env.BACKEND_BASE_URL}${content.casestudy?.data?.casestudy?.image}`} alt='image' className='img-fluid' />
                                             </div>
                                         </Col>
-                                        <Col xs={12} lg={2} className="d-flex pxx-0" style={{height:'200px'}}>
+                                        <Col xs={12} lg={2} className="d-flex pxx-0" style={{height:'225px'}}>
                                             <div className='textBlock d-flex speechBubble'>
-                                                <div>
-                                                    <p>
+                                            <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
+                                                    <p style={{color:'cadetblue'}}>
                                                         {content.casestudy?.data?.casestudy?.title}
-                                                </p>
-                                                {content.casestudy?.data?.casestudy?.slug ? (
+                                                  </p>
+                                                  {content.casestudy?.data?.casestudy?.slug ? (
                                                     
                                                     <Link
                                                         href={{

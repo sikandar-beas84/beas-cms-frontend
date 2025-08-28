@@ -13,6 +13,9 @@ import { useRouter } from 'next/router';
 import { postService } from "../configs/FetchRequest";
 
 const page = ({industry, enrichedContents}) => {
+
+    console.log("industry=",industry);
+
     const router = useRouter();
     if (router.isFallback) {
       return <div>Loading...</div>;
@@ -37,11 +40,11 @@ const page = ({industry, enrichedContents}) => {
                 url={metaUrl}
             />
             <main>
-                <BreadCrumb pagetitle={industry?.name} pageslug='Industry' />
+                <BreadCrumb pagetitle={industry?.name} pageslug='Industry' pageBanner={`assets/img/menu-content/${industry?.menu_contents?.banner}`} />
                 <Container className='py-5'>
                     <Row>
                         <Col>
-                            <p className='title mb-3'>{industry?.name}</p>
+                            {/* <p className='title mb-3'>{industry?.name}</p> */}
                             <div dangerouslySetInnerHTML={{ __html: industry?.description }} />
                             <div className='imageTextBlock'>
                                 <Row>
@@ -49,18 +52,18 @@ const page = ({industry, enrichedContents}) => {
                                         item?.casestudy?.data?.casestudy?.slug ? (
 
                                         <React.Fragment key={index}>
-                                            <Col xs={12} lg={2} className="d-flex px-0" style={{height:'200px'}}>
+                                            <Col xs={12} lg={2} className="d-flex px-0" style={{height:'225px'}}>
                                                 <div className='imageBlock d-flex'>
                                                     <Image width={550} height={50} src={`${env.BACKEND_BASE_URL}${item?.casestudy?.data?.casestudy?.image}`} alt='image' className='img-fluid' />
                                                 </div>
                                             </Col>
-                                            <Col xs={12} lg={2} className="d-flex pxx-0" style={{height:'200px'}}>
+                                            <Col xs={12} lg={2} className="d-flex pxx-0" style={{height:'225px'}}>
                                                 <div className='textBlock d-flex speechBubble'>
-                                                    <div>
-                                                        <p>
+                                                    <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
+                                                        <p style={{color:'cadetblue'}}>
                                                             {item?.casestudy?.data?.casestudy?.title}
-                                                    </p>
-                                                    {item?.casestudy?.data?.casestudy?.slug ? (
+                                                        </p>
+                                                        {item?.casestudy?.data?.casestudy?.slug ? (
                                                         // <Link
                                                         //     href={`/casestudy/${item?.casestudy?.data?.casestudy?.slug}`}
                                                         //     className="btn btn-outline-primary ms-auto"
@@ -79,9 +82,9 @@ const page = ({industry, enrichedContents}) => {
                                                             <ArrowUpRight />
                                                         </button>
                                                         )}
-                                                </div>
+                                                    </div>
 
-                                            </div>
+                                                </div>
                                             </Col>
                                         </React.Fragment>
                                         ): null

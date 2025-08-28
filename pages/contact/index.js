@@ -10,6 +10,7 @@ import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';
 
 const ContactUs = ({contactus}) => {
+
   const router = useRouter();
     if (router.isFallback) {
       return <div>Loading...</div>;
@@ -82,7 +83,7 @@ const ContactUs = ({contactus}) => {
         author="Beas Consultancy & Services Pvt. Ltd."
       />
       <main>
-        <BreadCrumb pagetitle="Contact Us" />
+        <BreadCrumb pagetitle="Contact Us" pageBanner={contactus?.banner} />
         <Container className='py-5'>
           <Row>
             <Col xs={12} lg={6}>

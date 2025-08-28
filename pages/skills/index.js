@@ -28,7 +28,7 @@ const page = ({skills}) => {
         author="Beas Consultancy & Services Pvt. Ltd."
       />
       <main>
-        <BreadCrumb pagetitle="Skills"/>
+        <BreadCrumb pagetitle="Skills" pageBanner={`assets/img/menu-content/${skills?.menu_contents?.banner}`}/>
         <Container className='py-5'>
             <Row>
                 <Col>

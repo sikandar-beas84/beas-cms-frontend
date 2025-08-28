@@ -35,7 +35,7 @@ const page = ({services, service}) => {
         url={metaUrl}
       />
       <main>
-        <BreadCrumb pagetitle="Service Page" />
+        <BreadCrumb pagetitle="Services" pageBanner={`assets/img/menu-content/${service?.menu_contents?.banner}`} />
         <Container className='py-5'>
           {/* <Row>
             <Col>
@@ -57,7 +57,7 @@ const page = ({services, service}) => {
                 </div>
                 <div className='serviceListBlockSecond'>
                   <div className='serviceListBlockWrap'><div className='industry-icons-pg'><Image width={450} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.icon}`} alt="image" /></div> <span className='title ml-10 mtt-15'>{item?.menu_contents?.title}</span></div>
-                    <div className='industries-body-text mt-3' dangerouslySetInnerHTML={{ __html: item?.menu_contents?.description?.split(' ').slice(0, 50).join(' ')+'...' }} />
+                    <div className='industries-body-text mt-3' dangerouslySetInnerHTML={{ __html: item?.menu_contents?.description?.split(' ').slice(0, 90).join(' ')+'...' }} />
                   <Nav.Link href={`/service/${item?.menu_contents?.slug}`} key={index} className='link-txt-new'>Read more <ArrowUpRight /></Nav.Link>
 
                 </div>

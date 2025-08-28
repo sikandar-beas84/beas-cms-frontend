@@ -34,7 +34,7 @@ const Indutries = ({industries}) => {
         author="Beas Consultancy & Services Pvt. Ltd."
       />
     <main>
-      <BreadCrumb pagetitle="Industries"/>
+      <BreadCrumb pagetitle="Industries" pageBanner={`assets/img/menu-content/${industries?.menu_contents?.banner}`} />
       <Container className='py-5'>
       {industryList?.map((item, index) => (
         <Row key={index}>

@@ -12,7 +12,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';
 
-const page = ({career, menucareer}) => {
+const page = ({career, menucareer, contact}) => {
 
   const router = useRouter();
   if (router.isFallback) {
@@ -173,7 +173,8 @@ const page = ({career, menucareer}) => {
             <p></p>
             <Row>
             <Col xs={12} lg={12}>
-              <p>We would be happy to hear from you, please fill in the form below or mail us your requirements on hr@weavers-web.com</p>
+              <p>We would be happy to hear from you, please fill in the form below or mail us your requirements on Email: <a href={`mailto:${contact.email}`}>{contact.email}</a>
+</p>
               <form className="was-validate" onSubmit={handleSubmit}>
                 <input type="hidden" name="job_id" value={career.id} />
                 <Row> 
@@ -306,6 +307,9 @@ export async function getServerSideProps({ params }) {
 
   const response = await HomeService.careerPage();
   const careers = response.data?.careers || [];
+
+  const result = await HomeService.contactPage();
+  const contact = result.data?.contact || [];
   // Find index of current project by matching the ID (slug)
   const career = careers.find((item) => item.id.toString() === slug);
 
@@ -318,7 +322,8 @@ export async function getServerSideProps({ params }) {
   return {
     props: {
       career,
-      menucareer
+      menucareer,
+      contact
     },
   };
 }

@@ -40,7 +40,7 @@ const page = ({casestudy, prevId, nextId}) => {
     />
     <main>
       <BreadCrumb pagetitle = {casestudy.title} pageslug='Casestudy' />
-      <div className="d-flex justify-content-between mt-3">
+      <div className="d-flex justify-content-around mt-3 mx-5">
           {prevId && (
             <Link href={`/casestudy/${prevId}`} className="btn btn-outline-primary">
               ← Previous
