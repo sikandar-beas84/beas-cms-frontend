@@ -193,7 +193,7 @@ export default function Home({homeData}) {
                       { homeData?.industries?.children?.map((item, index)=>(
                         <li key={index}>
                           <Link href={`/industries/${item.slug}`} style={{ cursor: "pointer", textDecoration:'none', color:'cadetblue', fontWeight:'800' }}>
-                          <div className="industy-block __list">
+                          <div className="industy-block __list" style={{borderRadius:'10px'}}>
                             <div className="industy-block __top">
                               <Image width={600} height={100} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.icon}`} alt="image" className="img-fluid" />
                               <p>{item.name}</p>

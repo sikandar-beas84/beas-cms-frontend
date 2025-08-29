@@ -58,7 +58,7 @@ const page = ({industry, enrichedContents}) => {
                                                 </div>
                                             </Col>
                                             <Col xs={12} lg={2} className="d-flex pxx-0" style={{height:'225px'}}>
-                                                <div className='textBlock d-flex speechBubble'>
+                                                <div className='textBlock d-flex speechBubble' style={{borderRadius:'10px'}}>
                                                     <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
                                                         <p style={{color:'cadetblue'}}>
                                                             {item?.casestudy?.data?.casestudy?.title}

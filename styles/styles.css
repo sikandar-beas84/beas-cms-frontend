@@ -829,7 +829,8 @@ footer ul li {
   width: 100px;
 }
 .industy-block.__list:hover {
-  background-color: #0081d2;
+  /* background-color: #0081d2; */
+  background-color: #00d223a8;
   color: #fff;
 }
 .industy-block.__list:hover .industy-block.__top img {

@@ -15,6 +15,7 @@ import { env } from '../constants/common';
   HomeService.individualProjectPage = (id) => getService(`get-individual-project?id=${id}`, `${env.ACCESS_TOKEN}`)
   HomeService.contactPage = () => getService('get-contact', `${env.ACCESS_TOKEN}`)
   HomeService.menuSkillPage = () => getService('get-menu-skills', `${env.ACCESS_TOKEN}`)
+  HomeService.menuProjectPage = () => getService('get-menu-casestudy', `${env.ACCESS_TOKEN}`)
   
 
   

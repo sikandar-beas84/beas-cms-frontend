@@ -9,7 +9,7 @@ import Link from 'next/link';
 import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';
 
-const page = ({casestudy}) => {
+const page = ({casestudy, menucasestudy}) => {
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -35,7 +35,7 @@ const page = ({casestudy}) => {
       author="Beas Consultancy & Services Pvt. Ltd."
     />
     <main>
-      <BreadCrumb pagetitle = {casestudy.title} pageslug='Casestudy' />
+      <BreadCrumb pagetitle = {casestudy.title} pageslug='Casestudy' pageBanner={`assets/img/menu-content/${menucasestudy?.menu_contents?.banner}`} />
       
       <Container className="py-5">
         <Row>  
@@ -82,10 +82,13 @@ export async function getServerSideProps({ query  }) {
   const response = await HomeService.individualProjectPage(id);
   const casestudy = response.data?.casestudy || [];
 
+  const result = await HomeService.menuProjectPage();
+  const menucasestudy = result.data?.casestudy || [];
+
   return {
     props: {
       casestudy,
-      id
+      menucasestudy
     },
   };
 }

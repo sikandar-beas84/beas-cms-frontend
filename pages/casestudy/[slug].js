@@ -13,7 +13,8 @@ import Link from 'next/link';
 import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';
 
-const page = ({casestudy, prevId, nextId}) => {
+const page = ({casestudy, menucasestudy, prevId, nextId}) => {
+  
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -39,7 +40,7 @@ const page = ({casestudy, prevId, nextId}) => {
       author="Beas Consultancy & Services Pvt. Ltd."
     />
     <main>
-      <BreadCrumb pagetitle = {casestudy.title} pageslug='Casestudy' />
+      <BreadCrumb pagetitle = {casestudy.title} pageslug='Casestudy' pageBanner={`assets/img/menu-content/${menucasestudy?.menu_contents?.banner}`} />
       <div className="d-flex justify-content-around mt-3 mx-5">
           {prevId && (
             <Link href={`/casestudy/${prevId}`} className="btn btn-outline-primary">
@@ -97,6 +98,9 @@ export async function getServerSideProps({ params }) {
   const response = await HomeService.projectPage();
   const projects = response.data?.projects || [];
 
+  const result = await HomeService.menuProjectPage();
+  const menucasestudy = result.data?.casestudy || [];
+
   // Find index of current project by matching the ID (slug)
   const currentIndex = projects.findIndex((item) => item.slug.toString() === slug);
 
@@ -113,6 +117,7 @@ export async function getServerSideProps({ params }) {
   return {
     props: {
       casestudy,
+      menucasestudy,
       prevId: prevProject?.slug || null,
       nextId: nextProject?.slug || null,
     },
