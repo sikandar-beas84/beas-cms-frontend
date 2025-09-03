@@ -108,7 +108,7 @@ export default function Home({homeData}) {
                         <span style={{ transform: 'rotate(272deg)' }}>c</span>
                         <span style={{ transform: 'rotate(289deg)' }}>e</span>
                         <span style={{ transform: 'rotate(306deg)' }}>2</span>
-                        <span style={{ transform: 'rotate(323deg)' }}>5</span>
+                        <span style={{ transform: 'rotate(323deg)' }}>0</span>
                         <span style={{ transform: 'rotate(340deg)' }}>-</span>
                       </h6>
                     </div>
@@ -129,9 +129,9 @@ export default function Home({homeData}) {
                     </p>
                   </Link>
                   <ul>
-                    <li><span>{homeData?.totalclients}+</span><span className="ttxt"> Clients</span></li>
-                    <li><span>{homeData?.totalprojects}+</span><span className="ttxt"> Projects</span></li>
-                    <li><span>{homeData?.totalexperts}+</span> <span className="ttxt">Experts</span></li>
+                    <li><span>300+</span><span className="ttxt"> Clients</span></li>
+                    <li><span>2k+</span><span className="ttxt"> Projects</span></li>
+                    <li><span>200+</span> <span className="ttxt">Experts</span></li>
                   </ul>
 
                 </div>
@@ -142,15 +142,16 @@ export default function Home({homeData}) {
         <section className="service-bg blue-bg-curve mt-5">
           <Container>
             <Row className="justify-content-start">
-              <Col xs={12} lg={7}>
-              <div style={{color:'white'}} dangerouslySetInnerHTML={{ __html: homeData?.services?.description }} />
+              <Col xs={12}>
+                <div className='heading-block'>Our Services</div>
+              {/* <div style={{color:'white'}} dangerouslySetInnerHTML={{ __html: homeData?.services?.description }} /> */}
               </Col>
             </Row>
 
-            <Row className="mt-5 service-box">
+            <Row className="mt-3 service-box">
             { homeData?.services?.children?.map((item, index)=>{
               const descriptionText = item?.description
-              ? item.description.split(" ").slice(0, 15).join(" ") + "..."
+              ? item.description.split(" ").slice(0, 10).join(" ") + "..."
               : "";
               return (
                 <Col lg={4} key={index}>
@@ -164,12 +165,15 @@ export default function Home({homeData}) {
                         className="img-fluid" 
                         alt="image" 
                         style={{
-                          filter: 'opacity(0.5) drop-shadow(0 0 0 white) brightness(7.5)',
+                          filter: 'opacity(0.8) drop-shadow(0 0 0 white) brightness(7.5)',
                         }}
                         />
                         <p>{item.name}</p>
                       </div>
-                      <div><ArrowUpRight /></div>
+                      <div className="service-wrap__txt">
+                        {descriptionText}
+                      </div>
+                      <div className='text-right'><ArrowUpRight /></div>
                       
                     </div>
                   </Nav.Link>
@@ -184,8 +188,8 @@ export default function Home({homeData}) {
             
             <Row>
               <Col>
-                <div className="logo-block">
-                  <p className="title mb-md-2 mb-lg-5">Industries we Serve</p>
+                <div className="">
+                  <p className="title-block">Industries we Serve</p>
                   {/* <BannerCarousal page="industry" /> */}
                   <Row>
                     <Col xs={12}>
@@ -212,10 +216,10 @@ export default function Home({homeData}) {
               </Col>
             </Row>
             <Row className="my-3">
-              <Col xs={12} lg={2}>
-                <p className="title-sm mt-2">Technologies</p>
+              <Col xs={12}>
+                <p className="title-block">Technologies</p>
               </Col>
-              <Col xs={12} lg={10}>
+              <Col xs={12}>
 
                 <div className="industy-block">
                   <Container>
@@ -257,7 +261,7 @@ export default function Home({homeData}) {
                     return null;
                   })}
                   </ul>
-                  <div className="partner-block">
+                  {/* <div className="partner-block">
                     <p className="partner-block__txt">Our Partners</p>
                     <div className="partner-block__imgBlock">
                       <ul>
@@ -266,7 +270,7 @@ export default function Home({homeData}) {
                       ))}
                         </ul>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </Col>
             </Row>

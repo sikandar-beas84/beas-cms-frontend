@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         {/* Add global stylesheet link here if needed */}
-        <link rel="stylesheet" href="/assets/css/styles.css" />
+        {/* <link rel="stylesheet" href="/assets/css/styles.css" /> */}
       </Head>
       <body>
         <Main />

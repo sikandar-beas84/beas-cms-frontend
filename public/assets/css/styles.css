@@ -55,7 +55,7 @@ a.blue-btn {
 }
 .slider-text p:first-child {
   font-size: 40px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 50px;
 }
 .f-small {
@@ -206,7 +206,7 @@ a.blue-btn {
   color: #5e5e5e;
 }
 .aboutTxt p:nth-child(2) {
-  font-weight: 700;
+  font-weight: 500;
   text-transform: capitalize;
   font-size: 2.5em;
   line-height: 1.3em;
@@ -226,13 +226,13 @@ a.blue-btn {
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: calc(100% / 3);
-  border-right: 1px solid #ebebeb;
+  border-right: 1px solid #bebaba;
 }
 .aboutTxt ul li:last-child {
   border-right: 1px solid transparent;
 }
 .aboutTxt ul li span {
-  font-size: 40px;
+  font-size: 38px;
   font-weight: 500;
   color: #191d27;
 }
@@ -529,8 +529,8 @@ a.blue-btn {
   padding: 0 0 20px 0;
 }
 .service-wrap__header img {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
 }
 .service-wrap__header p {
   margin-bottom: 0;
@@ -538,6 +538,7 @@ a.blue-btn {
   font-size: 1.5rem;
   color: #fff;
   font-weight: 500;
+  line-height: 1.2;
 }
 .service-wrap__txt {
   color: #fff;
@@ -1399,4 +1400,36 @@ footer ul li {
   .link-txt-new {
     font-size: 0.75rem;
   }
+}
+
+.service-block {margin:0; padding:0; display: flex;flex-direction: row;flex-wrap: wrap;list-style: none;}
+.text-right{text-align:right;}
+.service-box .col-lg-4{padding:0;}
+.service-box .col-lg-4:nth-child(1) .service-wrap,
+.service-box .col-lg-4:nth-child(4) .service-wrap,
+.service-box .col-lg-4:nth-child(7) .service-wrap {
+  border-left: none !important;
+}
+.service-box .col-lg-4{padding:0;}
+.service-box .col-lg-4:nth-child(7) .service-wrap,
+.service-box .col-lg-4:nth-child(8) .service-wrap,
+.service-box .col-lg-4:nth-child(9) .service-wrap {
+  border-bottom: none !important;
+}
+.service-box svg {color: #fff;}
+.heading-block{
+  font-weight: 500;
+    text-transform: capitalize;
+    font-size: 2rem;
+    line-height: 1.3em;
+    color: #ffffff;
+    text-align: left;
+}
+.title-block{
+  font-weight: 500;
+    text-transform: capitalize;
+    font-size: 2rem;
+    line-height: 1.3em;
+    color: #191d27;
+    text-align: left;
 }
