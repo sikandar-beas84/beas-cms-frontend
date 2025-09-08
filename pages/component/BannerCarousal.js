@@ -126,7 +126,8 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials })
                   <div className="overview">
                     <div className="overview-box">
                       <div className="name"><b>{item.name}</b></div>
-                      <div className="details">{item.role}</div>
+                      <div className="grey-txt" dangerouslySetInnerHTML={{ __html: item?.role }} />
+                      {/* <div className="details">{item.role}</div> */}
                     </div>
                     <div className="overview-box-quote">
                       <img src="/assets/images/quote.png" alt="image" className="img-fluid" />

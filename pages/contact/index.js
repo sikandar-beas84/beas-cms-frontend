@@ -104,6 +104,7 @@ const ContactUs = ({contactus}) => {
                       <div className="gry-txt" dangerouslySetInnerHTML={{ __html: contactus?.short_desc }} />
                     </div>
                   </Col>
+                  <Row className='row contact-form margin-top-8'>
                   <Col xs={12} lg={6}>
                     <label>Name <span className='text-danger'><b>*</b></span></label>
                     <input 
@@ -170,6 +171,7 @@ const ContactUs = ({contactus}) => {
                       <p className='bold-title' style={{fontSize:'12px'}}>Attach files: (File size up to 3 MB. Formats: doc, docx, pdf, ppt, pptx)</p>
                     
                   </Col>
+                  </Row>
                   <Col xs={12} lg={3}>
                     <button type="submit" className='red-btn w-100 mt-3'>Submit</button>
                   </Col>

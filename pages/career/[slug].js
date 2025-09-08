@@ -33,6 +33,8 @@ const page = ({career, menucareer, contact}) => {
   });
 
   const [status, setStatus] = useState('');
+  const [errors, setErrors] = useState({});
+
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -72,15 +74,16 @@ const page = ({career, menucareer, contact}) => {
       });
 
       const result = await res.json();
-
       if (res.ok) {
-        setStatus('✅ Your job application has been accepted.');
+        setStatus('✅ Your job application has been submitted successfully.');
+        setErrors({});
         setFormData({
-          name: '', email: '', phone: '', city: '', state: '', pincode: '', address: '', resume: ''
+          name: '', email: '', phone: '', resume: ''
         });
         //recaptchaRef.current.reset();
       } else {
         setStatus(`❌ Error: ${result.message || 'Failed to send'}`);
+        setErrors(result.error); // store errors in state
       }
     } catch (err) {
       console.error(err);
@@ -121,174 +124,133 @@ const page = ({career, menucareer, contact}) => {
               </div>
             </Col>
           </Row>
-          <p></p>
-          <Row>
-            <Col xs={12} lg={4}>
-            <span className="bold-title">Level of Experience:</span><span> {career.experience}</span>
-            </Col>
-            <Col xs={12} lg={4}>
-            <span className="bold-title">Location:</span><span> {career.location}</span>
-            </Col>
-            <Col xs={12} lg={4}>
-            <span className="bold-title">Job Type:</span><span> Full Time</span>
-            </Col>
-          </Row>
-          <p></p>
-          {/* <div className='map-wrap'></div> */}
-          <Row>
+          <Row className='pt-3'>
             <Col xs={12} lg={6}>
-                
-                {(Array.isArray(career.required_skills) && career.required_skills.length > 0) ||
-                  (typeof career.required_skills === 'string' && career.required_skills.trim() !== '') ? (
-                    <>
-                      <p className="bold-title">Required Skills</p>
-                      <ul>
-                        {(Array.isArray(career.required_skills)
-                          ? career.required_skills
-                          : career.required_skills.split(',')
-                        ).map((skill, index) => (
-                          <li key={index}>{skill}</li>
-                        ))}
-                      </ul>
-                    </>
-                  ) : null}
+              <Row>
+                <Col xs={12} lg={4}>
+                <span className="bold-title">Level of Experience:</span><p> {career.experience}</p>
+                </Col>
+                <Col xs={12} lg={4}>
+                <span className="bold-title">Location:</span><p> {career.location}</p>
+                </Col>
+                <Col xs={12} lg={4}>
+                <span className="bold-title">Job Type:</span><p> Full Time</p>
+                </Col>
+              </Row>
+              <Row className='pt-2'>
+                <Col xs={12} lg={6}>  
+                    {(Array.isArray(career.required_skills) && career.required_skills.length > 0) ||
+                      (typeof career.required_skills === 'string' && career.required_skills.trim() !== '') ? (
+                        <>
+                          <p className="bold-title">Required Skills</p>
+                          <ul>
+                            {(Array.isArray(career.required_skills)
+                              ? career.required_skills
+                              : career.required_skills.split(',')
+                            ).map((skill, index) => (
+                              <li key={index}>{skill}</li>
+                            ))}
+                          </ul>
+                        </>
+                      ) : null}
+                </Col>
+                <Col xs={12} lg={6}>
+                    {(Array.isArray(career.additional_skills) && career.additional_skills.length > 0) ||
+                      (typeof career.additional_skills === 'string' && career.additional_skills.trim() !== '') ? (
+                        <>
+                          <p className="bold-title">Additional Skills</p>
+                          <ul>
+                            {(Array.isArray(career.additional_skills)
+                              ? career.additional_skills
+                              : career.additional_skills.split(',')
+                            ).map((skill, index) => (
+                              <li key={index}>{skill}</li>
+                            ))}
+                          </ul>
+                        </>
+                      ) : null}
+                </Col>
+              </Row>
+              <Row className='pt-2'>
+                <Col xs={12} lg={12}><p>We would be happy to hear from you, please fill in the form below or mail us your requirements on Email: <a href={`mailto:${contact.email}`}>{contact.email}</a>
+              </p></Col>
+              </Row>
             </Col>
             <Col xs={12} lg={6}>
-                {(Array.isArray(career.additional_skills) && career.additional_skills.length > 0) ||
-                  (typeof career.additional_skills === 'string' && career.additional_skills.trim() !== '') ? (
-                    <>
-                      <p className="bold-title">Additional Skills</p>
-                      <ul>
-                        {(Array.isArray(career.additional_skills)
-                          ? career.additional_skills
-                          : career.additional_skills.split(',')
-                        ).map((skill, index) => (
-                          <li key={index}>{skill}</li>
-                        ))}
-                      </ul>
-                    </>
-                  ) : null}
-            </Col>
-            </Row>
-            <p></p>
-            <Row>
-            <Col xs={12} lg={12}>
-              <p>We would be happy to hear from you, please fill in the form below or mail us your requirements on Email: <a href={`mailto:${contact.email}`}>{contact.email}</a>
-</p>
               <form className="was-validate" onSubmit={handleSubmit}>
                 <input type="hidden" name="job_id" value={career.id} />
-                <Row> 
-                  <Col xs={12} lg={3}>
-                    <label>Name <span className='text-danger'><b>*</b></span></label>
-                    <input 
-                      type='text' 
-                      name="name" 
-                      value={formData.name}
-                      onChange={handleChange}
-                      className='form-control mb-3'
-                      required 
-                    />
-                  </Col>
-                  <Col xs={12} lg={3}>
-                    <label>Email <span className='text-danger'><b>*</b></span></label>
-                    <input 
-                      type='text' 
-                      name="email" 
-                      value={formData.email}
-                      onChange={handleChange}
-                      className='form-control mb-3'
-                      required 
-                    />
-                  </Col>
-                  <Col xs={12} lg={3}>
-                    <label>Phone No <span className='text-danger'><b>*</b></span></label>
-                    <input 
-                      type='text' 
-                      name="phone" 
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className='form-control mb-3'
-                      required 
-                    />
-                  </Col>
-                  
-                  <Col xs={12} lg={3}>
-                    <label>City <span className='text-danger'><b>*</b></span></label>
-                    <input 
-                      type='text' 
-                      name="city" 
-                      value={formData.city}
-                      onChange={handleChange}
-                      className='form-control mb-3'
-                      required 
-                    />
-                  </Col>
-                  <Col xs={12} lg={3}>
-                    <label>State <span className='text-danger'><b>*</b></span></label>
-                    <input 
-                      type='text' 
-                      name="state" 
-                      value={formData.state}
-                      onChange={handleChange}
-                      className='form-control mb-3'
-                      required 
-                    />
-                  </Col>
-                  
-                  <Col xs={12} lg={3}>
-                    <label>Pin Code <span className='text-danger'><b>*</b></span></label>
-                    <input 
-                      type='text' 
-                      name="pincode" 
-                      value={formData.pincode}
-                      onChange={handleChange}
-                      className='form-control mb-3'
-                      required 
-                    />
-                  </Col>
-                  <Col xs={12} lg={3}>
-                    <label>Address <span className='text-danger'><b>*</b></span></label>
-                    <input
-                    type='text' 
-                    name="address" 
-                    value={formData.address}
-                    onChange={handleChange}
-                    className='form-control mb-3'
-                    required 
-                    />
-                  </Col>
-                  <Col xs={12} lg={3}>
-                    <label>Choose Your Resume: <span className='text-danger'><b>*</b></span></label>
+                  <Row> 
+                    <Col xs={12} lg={6}>
+                      <label>Name <span className='text-danger'><b>*</b></span></label>
                       <input 
-                          type='file' 
-                          name="resume" 
-                          onChange={handleChange}
-                          accept=".doc,.docx,.pdf,.ppt,.pptx"
-                          className='form-control mb-3' 
-                        />
+                        type='text' 
+                        name="name" 
+                        value={formData.name}
+                        onChange={handleChange}
+                        className='form-control mb-3'
+                        required 
+                      />
+                      {errors.name && (<p className='error_message'>{errors.name[0]}</p>)}
                     </Col>
-                  
-                  <Row>
-                    <Col xs={12} lg={9}></Col>
-                    <Col xs={12} lg={3}>
-                    <p className='bold-title' style={{fontSize:'12px'}}>Attach files: (File size up to 3 MB. Formats: doc, docx, pdf, ppt, pptx)</p>
+                    <Col xs={12} lg={6}>
+                      <label>Email <span className='text-danger'><b>*</b></span></label>
+                      <input 
+                        type='text' 
+                        name="email" 
+                        value={formData.email}
+                        onChange={handleChange}
+                        className='form-control mb-3'
+                        required 
+                      />
+                      {errors.email && (<p className='error_message'>{errors.email[0]}</p>)}
                     </Col>
                   </Row>
-                  <Col xs={12} className='my-3'>
-                    <ReCAPTCHA
-                      sitekey={`${env.SITE_KEY}`}
-                      onChange={setCaptchaToken}
-                    />
-                  </Col>
-                  <Col xs={12} lg={3}>
-                    <button type="submit" className='red-btn w-100 mt-3'>Submit</button>
-                  </Col>
-                  <Col xs={12} className='mt-3'>
-                  {status && <p>{status}</p>}
-                  </Col>
-                </Row>
-              </form>
+                  <Row>
+                    <Col xs={12} lg={6}>
+                      <label>Phone No <span className='text-danger'><b>*</b></span></label>
+                      <input 
+                        type='text' 
+                        name="phone" 
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className='form-control mb-3'
+                        required 
+                      />
+                      {errors.phone && (<p className='error_message'>{errors.phone[0]}</p>)}
+                    </Col>
 
+                    <Col xs={12} lg={6}>
+                      <label>Choose Your Resume: <span className='text-danger'><b>*</b></span></label>
+                        <input 
+                            type='file' 
+                            name="resume" 
+                            onChange={handleChange}
+                            accept=".doc,.docx,.pdf,.ppt,.pptx"
+                            className='form-control mb-3' 
+                          />
+                      <p className='bold-title' style={{fontSize:'12px'}}>Attach files: (File size up to 2 MB. Formats: doc, docx, pdf, ppt, pptx)</p>
+                      {errors.resume && (<p className='error_message'>{errors.resume[0]}</p>)}
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col xs={12} className='my-3'>
+                      <ReCAPTCHA
+                        sitekey={`${env.SITE_KEY}`}
+                        onChange={setCaptchaToken}
+                      />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col xs={12} lg={3}>
+                      <button type="submit" className='red-btn w-100 mt-3'>Submit</button>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col xs={12} className='mt-3'>
+                    {status && <p>{status}</p>}
+                    </Col>
+                  </Row>
+              </form>
             </Col>
           </Row>
         </Container>

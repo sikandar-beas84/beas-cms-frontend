@@ -41,7 +41,7 @@ const career = ({careers, menucareer}) => {
           </Row>
           <Row>
               <Col>
-                <div className="logo-block">
+                <div className="">
                   <Row>
                     <Col xs={12}>
                       <ul className="service-block">

@@ -2,6 +2,7 @@
 import React from 'react'
 import BreadCrumb from '../component/BreadCrumb'
 import { Container, Row, Col } from 'react-bootstrap'
+import Accordion from 'react-bootstrap/Accordion';
 import Image from 'next/image';
 import HomeService from '../services/Home';
 import { env } from '../constants/common';
@@ -59,12 +60,34 @@ const page = ({casestudy, menucasestudy}) => {
           </Col>
           <Col xs={12} lg={7}>
            
-            <p className='title mb-3'>Project Overview / Business Need</p>
+            {/* <p className='title mb-3'>Project Overview / Business Need</p>
             {<div dangerouslySetInnerHTML={{ __html: casestudy?.business_need }} />}
             <p className='title my-3'>BEAS’s Solution</p>
             {<div dangerouslySetInnerHTML={{ __html: casestudy?.beas_solution }} />}
             <p className='title my-3'>Benefits to the customer</p>
-            {<div dangerouslySetInnerHTML={{ __html: casestudy?.benefits_to_the_customer }} />}
+            {<div dangerouslySetInnerHTML={{ __html: casestudy?.benefits_to_the_customer }} />} */}
+
+            <Accordion defaultActiveKey="0" flush>
+              <Accordion.Item eventKey="0">
+                <Accordion.Header>Project Overview / Business Need</Accordion.Header>
+                <Accordion.Body>
+                {<div dangerouslySetInnerHTML={{ __html: casestudy?.business_need }} />}
+                </Accordion.Body>
+              </Accordion.Item>
+              <Accordion.Item eventKey="1">
+                <Accordion.Header>BEAS’s Solution</Accordion.Header>
+                <Accordion.Body>
+                {<div dangerouslySetInnerHTML={{ __html: casestudy?.beas_solution }} />}
+                </Accordion.Body>
+              </Accordion.Item>
+              <Accordion.Item eventKey="2">
+                <Accordion.Header>Benefits to the customer</Accordion.Header>
+                <Accordion.Body>
+                {<div dangerouslySetInnerHTML={{ __html: casestudy?.benefits_to_the_customer }} />}
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
+
           </Col>
           
         </Row>

@@ -199,11 +199,25 @@ export default function Home({homeData}) {
                           <Link href={`/industries/${item.slug}`} style={{ cursor: "pointer", textDecoration:'none', }}>
                           <div className="industy-block __list" style={{borderRadius:'10px'}}>
                             <div className="industy-block __top">
+                              <div className='iimage-wrapper'>
                               <Image width={600} height={100} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.icon}`} alt="image" className="img-fluid" />
-                              <p>{item.name}</p>
+                              </div>
                             </div>
                             <div className="industy-block __bottom">
-                              <ArrowUpRight />       
+                            <p>{item.name}</p>
+                              <div className='icon-wrapper'>
+                              <svg xmlns="http://www.w3.org/2000/svg" 
+                                width="24" height="24" 
+                                viewBox="0 0 24 24" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                stroke-width="2" 
+                                stroke-linecap="round" 
+                                stroke-linejoin="round">
+                              <line x1="7" y1="17" x2="17" y2="7"></line>
+                              <polyline points="7 7 17 7 17 17"></polyline>
+                            </svg>
+                              </div>      
                             </div>
                           </div>
                           </Link>
@@ -284,7 +298,7 @@ export default function Home({homeData}) {
           <Container>
             <Row className="project-wrap mb-4">
               <Col xs={12} lg={9}>
-                <div className="title">
+                <div className="title-block">
                   Project Experience
                 </div>
               </Col>
@@ -318,10 +332,10 @@ export default function Home({homeData}) {
         <section className="mt-5">
           <Container>
             <Row>
-              <Col xs={12} lg={2}>
-                <p className="title-sm">Core Clients</p>
+              <Col xs={12} lg={12}>
+                <p className="title-block">Core Clients</p>
               </Col>
-              <Col xs={12} lg={10}>
+              <Col xs={12} lg={12}>
 
                 <div className="industy-block">
                   <Container>

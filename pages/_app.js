@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../public/assets/css/styles.css';
-
+import "@flaticon/flaticon-uicons/css/all/all.css";
 import Header from './component/Header';
 import Footer from './component/Footer';
 import HomeService from "./services/Home";
