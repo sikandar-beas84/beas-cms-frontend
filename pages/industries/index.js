@@ -40,41 +40,45 @@ const Indutries = ({industries}) => {
         <Row key={index}>
           {index % 2 === 0 ? (
             <>
-          <Col xs={12} lg={6}>
-            <div>
-              <p className='title'><Image width={450} height={150} className='industry-icons-pg' src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.icon}`}  alt="image" />{item?.name}</p>
-              <div className='industries-body-text' dangerouslySetInnerHTML={{ __html: item?.description }} />
-              <Link href={`/industries/${item?.slug}`}>
-                    <p style={{ cursor: "pointer" }}>
-                      Learn More <ArrowUpRight />
-                    </p>
-                  </Link>
-            </div>
-          </Col>
+            
           <Col xs={12} lg={6}>
             <div className='mediaimg'>
               <Image width={600} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.image}`} alt="image" className="img-fluid mb-5" />
             </div>
           </Col>
-            </> ):(
-              <>
-              <Col xs={12} lg={6}>
-                <div className='mediaimg'>
-                  <Image width={600} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.image}`} alt="image" className="img-fluid mb-5" />
-                </div>
-              </Col>
-              <Col xs={12} lg={6}>
-                <div>
-                  <p className='title'><Image width={450} height={150} className='industry-icons-pg' src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.icon}`}  alt="image" />{item?.name}</p>
-                  <div className='industries-body-text' dangerouslySetInnerHTML={{ __html: item?.description }} />
+          <Col xs={12} lg={6}>
+            <div className='industriesInfo pt-4'>
+              <p className='title'>{item?.name}</p>
+              <div className='industries-body-text py-3' dangerouslySetInnerHTML={{ __html: item?.description }} />
+              <div className='Learn_More_Link'>
                   <Link href={`/industries/${item?.slug}`}>
                     <p style={{ cursor: "pointer" }}>
                       Learn More <ArrowUpRight />
                     </p>
                   </Link>
                 </div>
+            </div>
+          </Col>
+            </> ):(
+              <>
+              <Col xs={12} lg={6}>
+                <div className='industriesInfo pt-4'>
+                  <p className='title'>{item?.name}</p>
+                  <div className='industries-body-text py-3' dangerouslySetInnerHTML={{ __html: item?.description }} />
+                  <div className='Learn_More_Link'>
+                    <Link href={`/industries/${item?.slug}`}>
+                      <p style={{ cursor: "pointer" }}>
+                        Learn More <ArrowUpRight />
+                      </p>
+                    </Link>
+                  </div>
+                </div>
+              </Col>        
+              <Col xs={12} lg={6}>
+                <div className='mediaimg'>
+                  <Image width={600} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.image}`} alt="image" className="img-fluid mb-5" />
+                </div>
               </Col>
-        
               </>
             )}
 

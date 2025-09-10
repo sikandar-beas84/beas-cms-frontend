@@ -55,10 +55,13 @@ const page = ({services, service}) => {
                     <Image width={600} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.image}`} alt="image" className="img-fluid mb-5" />
                   </div>
                 </div>
-                <div className='serviceListBlockSecond'>
-                  <div className='serviceListBlockWrap'><div className='industry-icons-pg'><Image width={450} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.icon}`} alt="image" /></div> <span className='title ml-10 mtt-15'>{item?.menu_contents?.title}</span></div>
-                    <div className='industries-body-text mt-3' dangerouslySetInnerHTML={{ __html: item?.menu_contents?.description?.split(' ').slice(0, 90).join(' ')+'...' }} />
-                  <Nav.Link href={`/service/${item?.menu_contents?.slug}`} key={index} className='link-txt-new'>Read more <ArrowUpRight /></Nav.Link>
+                <div className='serviceListBlockSecond serviceInfo'>
+                  <div className='serviceListBlockWrap'> <span className='title'>{item?.menu_contents?.title}</span></div>
+                    <div className='industries-body-text py-3' dangerouslySetInnerHTML={{ __html: item?.menu_contents?.description?.split(' ').slice(0, 90).join(' ')+'...' }} />
+                    <div className='Learn_More_Link'>
+                      <Nav.Link href={`/service/${item?.menu_contents?.slug}`} key={index} className='link-txt-new'>Read more <ArrowUpRight /></Nav.Link>
+                    </div>
+                  
 
                 </div>
               </div>

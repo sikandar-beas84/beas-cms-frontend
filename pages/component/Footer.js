@@ -41,7 +41,7 @@ const Footer = ({homeData}) => {
     <>
       <footer>
         <Container>
-          <Row>
+          <Row className='justify-content-center'>
 
             <Col xs={12} lg={3} className='mb-md-2 mb-lg-0'>
               <p>Services</p>
@@ -79,7 +79,7 @@ const Footer = ({homeData}) => {
               })}
               </ul>
             </Col>
-            <Col xs={12} lg={3}>
+            <Col xs={12} lg={4}>
               <p>Quick Contact</p>
               <ul className='contactInfo'>
 
@@ -94,22 +94,22 @@ const Footer = ({homeData}) => {
                 <li><span><Mail /></span> <span>Email: {homeData?.contactus?.email}</span></li>
               </ul>
             </Col>
-            <Col xs={12} lg={4}>
-              <p>Location</p>
-              <div className='mt-2'>
-                <iframe src={homeData?.contactus?.url} width="100%" height="200" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+            <Col xs={12} lg={2}>
+              <p>Our Certificate</p>
+              <div className='mt-2 CertificatePic'>
+                {/* <iframe src={homeData?.contactus?.url} width="100%" height="200" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe> */}
+                
+                <div className='certificate-icon'>
+                  <img src="/assets/images/certificate2.png"></img>
+                </div>
+                <div className='certificate-icon'>
+                  <img src="/assets/images/certificate3.png"></img>
+                </div>
+                <div className='certificate-icon'>
+                  <img src="/assets/images/certificate1.png"></img>
+                </div>
+                
               </div>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <ul className='certificateBlock'>
-              { homeData?.certificates?.map((item, index)=>(
-                <li key={index}>
-                  <img src={`${env.BACKEND_BASE_URL}${item?.image}`} alt='image' className='img-fluid' />
-                </li>
-              ))}
-              </ul>
             </Col>
           </Row>
         </Container>

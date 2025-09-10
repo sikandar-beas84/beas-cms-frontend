@@ -52,16 +52,18 @@ const page = ({service, enrichedChildren }) => {
                                 {item1?.menu_contents?.contents?.map((content, index) =>
                                 content?.extra_description ? (
                                     <React.Fragment key={index}>
-                                        <Col xs={12} lg={2} className="d-flex px-0" style={{height:'225px'}}>
-                                            <div className='imageBlock d-flex'>
-                                                <Image width={550} height={50} src={`${env.BACKEND_BASE_URL}${content.casestudy?.data?.casestudy?.image}`} alt='image' className='img-fluid' />
-                                            </div>
-                                        </Col>
-                                        <Col xs={12} lg={2} className="d-flex pxx-0" style={{height:'225px'}}>
-                                            <div className='textBlock d-flex speechBubble' style={{borderRadius:'10px'}}>
+                                        <Col xs={3}>
+                                            <div className='gigs_box'>
+                                                <div className='story-box'>
+                                                  <Image width={550} height={50} src={`${env.BACKEND_BASE_URL}${content.casestudy?.data?.casestudy?.image}`} alt='image' className='img-fluid' />
+                                              </div>
+
+                                              <div className='p-3'>
                                             <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
-                                                    <p style={{color:'cadetblue'}}>
-                                                        {content.casestudy?.data?.casestudy?.title}
+                                                    <p className='mt-3'>
+                                                    {content?.casestudy?.data?.casestudy?.title
+                                                            ? content.casestudy.data.casestudy.title.substring(0, 60) + "..."
+                                                            : ""}
                                                   </p>
                                                   {content.casestudy?.data?.casestudy?.slug ? (
                                                     
@@ -70,18 +72,20 @@ const page = ({service, enrichedChildren }) => {
                                                             pathname: "/casestudy",
                                                             query: { id: content.casestudy?.data?.casestudy?.id },
                                                         }}
-                                                        className="btn btn-outline-primary ms-auto"
+                                                        className=""
                                                         >
-                                                        <ArrowUpRight />
+                                                        Read Case Study<ArrowUpRight />
                                                     </Link>
                                                     ) : (
-                                                    <button type="button" className="btn btn-outline-primary ms-auto" disabled>
-                                                        <ArrowUpRight />
+                                                    <button type="button" className="" disabled>
+                                                        Read Case Study<ArrowUpRight />
                                                     </button>
                                                     )}
                                             </div>
 
                                         </div>
+                                            </div>
+                                            
                                         </Col>
                                     </React.Fragment>
                                     ) : null
