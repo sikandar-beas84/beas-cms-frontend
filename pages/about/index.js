@@ -44,15 +44,15 @@ const page = ({aboutus, experts}) => {
 
             <main>
                 <BreadCrumb pagetitle="About Us" pageBanner={`assets/img/menu-content/${aboutus?.menu_contents?.banner}`} />
-                <Container className='py-5'>
+                <Container className='py-5 container-bx'>
                     <Row>
                         <Col>
                             <div className="aboutusTxt">
 
-                                <Image width={450} height={150} src={`${env.BACKEND_BASE_URL}${aboutus?.image}`} className="img-fluid" alt="image" />
-                                <div className="aboutTxt">
+                                <Image width={450} height={150} src={`${env.BACKEND_BASE_URL}${aboutus?.image}`} className="img-fluid about_thumb_img" alt="image" />
+                                <div className="abut_all_contents">
                                     <p className="sub-title">About Our Company</p>
-                                    <p>{aboutus?.menu_contents?.title}</p>
+                                    <h1>{aboutus?.menu_contents?.title}</h1>
                                     <div dangerouslySetInnerHTML={{ __html: aboutus?.description }} />
                                 </div>
                                 <div className='clear'></div>
@@ -61,24 +61,78 @@ const page = ({aboutus, experts}) => {
 
                     </Row>
                 </Container>
-                <section className='service-left-panel-curve pad-150'>
+
+                <section className='about_count_sec'>
                     <Container>
                         <Row>
-                            <Col xs={12} className='text-center mb-5'>
+                            <Col xs={12} className='text-center about_count_inr'>
+                                
+                                <div className='counterpanel'>
+                                    <div className='counterInrPanel'>
+                                        <Row>
+                                            <Col>
+                                                <div class="counter_bx">
+                                                    <em>
+                                                        <img src="/assets/images/SatisfiedClients.png"></img>
+                                                    </em>
+                                                    <div class="st_texts">
+                                                        <p><span class="counter-value" data-count="100">300+</span></p>
+                                                        <b>Satisfied Clients Across the Globe</b>
+                                                    </div>
+                                                </div>
+                                            </Col>
+                                            <Col>
+                                                <div class="counter_bx">
+                                                    <em>
+                                                        <img src="/assets/images/ProjectsDeliveredSuccessfully.png"></img>
+                                                    </em>
+                                                    <div class="st_texts">
+                                                        <p><span class="counter-value" data-count="100">2k+</span></p>
+                                                        <b>Projects Delivered Successfully</b>
+                                                    </div>
+                                                </div>
+                                            </Col>
+                                            <Col>
+                                                <div class="counter_bx">
+                                                    <em>
+                                                        <img src="/assets/images/ExpertsUndertheSameRoof.png"></img>
+                                                    </em>
+                                                    <div class="st_texts">
+                                                        <p><span class="counter-value" data-count="100">200+</span></p>
+                                                        <b>Experts Under the Same Roof</b>
+                                                    </div>
+                                                </div>
+                                            </Col>
+                                        </Row>
+                                    </div>
+                                </div>
                                 <p className="sub-title">Specality Of Our Company</p>
                                 <div className='title' dangerouslySetInnerHTML={{ __html: aboutus?.menu_contents?.description }} />
+                                
                             </Col>
+                        </Row>
+                    </Container>
+                </section>
+
+                <section className='mis_about_section'>
+                    <Container>
+                        <Row>
+                            {/* <Col xs={12} className='text-center mb-5'>
+                                <p className="sub-title">Specality Of Our Company</p>
+                                <div className='title' dangerouslySetInnerHTML={{ __html: aboutus?.menu_contents?.description }} />
+                            </Col> */}
                             <Col xs={12}>
                                 <div className='white-card-container'>
                                     { aboutus?.menu_contents?.contents.map((item,index)=>(
-                                    <div className='white-card' key={index}>
-                                        <div className='white-card__title-bar'>
-                                            <div className='white-card__title-bar__icon-box'>
-                                                <Image width={450} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.extra_icon}`} className="img-fluid" alt="image" />
-                                            </div>
-                                            <p className='title ml-10 mtt-25 f-16'>{item?.extra_title}</p>
+                                    <div className='white-card mis_cont' key={index}>
+                                        <div className='media_img'>
+                                            <Image width={450} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.extra_icon}`} className="img-fluid" alt="image" />
                                         </div>
-                                        <div className='mt-3' dangerouslySetInnerHTML={{ __html: item?.extra_description }} />
+                                        <div className='media-body'>
+                                            <p className=''>{item?.extra_title}</p>
+                                            <div className='' dangerouslySetInnerHTML={{ __html: item?.extra_description }} />
+                                        </div>
+                                        
 
                                     </div>
                                     ))}
