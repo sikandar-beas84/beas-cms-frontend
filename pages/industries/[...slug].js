@@ -44,48 +44,53 @@ const page = ({industry, enrichedContents}) => {
                 <Container className='py-5'>
                     <Row>
                         <Col>
+                            <div class="cmsPage_h1">Industries</div>
                             {/* <p className='title mb-3'>{industry?.name}</p> */}
-                            <div dangerouslySetInnerHTML={{ __html: industry?.description }} />
-                            <div className='imageTextBlock'>
+                            <div className='IndustriesPara mb-4' dangerouslySetInnerHTML={{ __html: industry?.description }} />
+                            <div className=''>
                                 <Row>
                                     { enrichedContents?.map((item, index)=>(
                                         item?.casestudy?.data?.casestudy?.slug ? (
 
                                         <React.Fragment key={index}>
-                                            <Col xs={12} lg={2} className="d-flex px-0" style={{height:'225px'}}>
-                                                <div className='imageBlock d-flex'>
-                                                    <Image width={550} height={50} src={`${env.BACKEND_BASE_URL}${item?.casestudy?.data?.casestudy?.image}`} alt='image' className='img-fluid' />
-                                                </div>
-                                            </Col>
-                                            <Col xs={12} lg={2} className="d-flex pxx-0" style={{height:'225px'}}>
-                                                <div className='textBlock d-flex speechBubble' style={{borderRadius:'10px'}}>
-                                                    <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
-                                                        <p style={{color:'cadetblue'}}>
-                                                            {item?.casestudy?.data?.casestudy?.title}
-                                                        </p>
-                                                        {item?.casestudy?.data?.casestudy?.slug ? (
-                                                        // <Link
-                                                        //     href={`/casestudy/${item?.casestudy?.data?.casestudy?.slug}`}
-                                                        //     className="btn btn-outline-primary ms-auto"
-                                                        // >
-                                                        <Link
-                                                            href={{
-                                                                pathname: "/casestudy",
-                                                                query: { id: item?.casestudy?.data?.casestudy?.id },
-                                                            }}
-                                                            className="btn btn-outline-primary ms-auto"
-                                                            >
-                                                            <ArrowUpRight />
-                                                        </Link>
-                                                        ) : (
-                                                        <button type="button" className="btn btn-outline-primary ms-auto" disabled>
-                                                            <ArrowUpRight />
-                                                        </button>
-                                                        )}
+                                            <Col xs={3}>
+                                                <div className='gigs_box'>
+                                                    <div className='story-box'>
+                                                        <Image width={550} height={200} src={`${env.BACKEND_BASE_URL}${item?.casestudy?.data?.casestudy?.image}`} alt='image' className='img-fluid' />
                                                     </div>
-
+                                                    <div className='p-3'>
+                                                        <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
+                                                            <p className='mt-3'>
+                                                            {item?.casestudy?.data?.casestudy?.title
+                                                            ? item.casestudy.data.casestudy.title.substring(0, 60) + "..."
+                                                            : ""}
+                                                            </p>
+                                                            {item?.casestudy?.data?.casestudy?.slug ? (
+                                                            // <Link
+                                                            //     href={`/casestudy/${item?.casestudy?.data?.casestudy?.slug}`}
+                                                            //     className="btn btn-outline-primary ms-auto"
+                                                            // >
+                                                            <Link
+                                                                href={{
+                                                                    pathname: "/casestudy",
+                                                                    query: { id: item?.casestudy?.data?.casestudy?.id },
+                                                                }}
+                                                                className=""
+                                                                >
+                                                                Read Case Study <ArrowUpRight />
+                                                            </Link>
+                                                            ) : (
+                                                            <button type="button" className="" disabled>
+                                                                Read Case Study <ArrowUpRight />
+                                                            </button>
+                                                            )}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </Col>
+
+
+                                            
                                         </React.Fragment>
                                         ): null
                                 ))} 
