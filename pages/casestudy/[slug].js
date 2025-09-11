@@ -70,14 +70,16 @@ const page = ({ casestudy, menucasestudy, projects, currentSlug }) => {
                 />
               </div>
 
-              <div className="service-left-panel vertical-box my-3">
-                <p className="title">Technology Platform</p>
-                <ul>
-                  {casestudy?.technology_platform?.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </ul>
-              </div>
+              {casestudy?.technology_platform?.length > 0 && (
+                <div className="service-left-panel vertical-box my-3">
+                  <p className="title">Technology Platform</p>
+                  <ul>
+                    {casestudy.technology_platform.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
             </Col>
 
