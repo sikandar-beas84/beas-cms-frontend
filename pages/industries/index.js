@@ -35,7 +35,7 @@ const Indutries = ({industries}) => {
       />
     <main>
       <BreadCrumb pagetitle="Industries" pageBanner={`assets/img/menu-content/${industries?.menu_contents?.banner}`} />
-      <Container className='py-5'>
+      <Container className='py-5 Industries_how-it-works__lcCAN'>
       {industryList?.map((item, index) => (
         <Row key={index}>
           {index % 2 === 0 ? (
@@ -43,7 +43,7 @@ const Indutries = ({industries}) => {
             
           <Col xs={12} lg={6}>
             <div className='mediaimg'>
-              <Image width={600} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.image}`} alt="image" className="img-fluid mb-5" />
+              <Image width={600} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.image}`} alt="image" className="img-fluid" />
             </div>
           </Col>
           <Col xs={12} lg={6}>

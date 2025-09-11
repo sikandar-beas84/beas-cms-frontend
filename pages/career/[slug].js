@@ -116,33 +116,23 @@ const page = ({career, menucareer, contact}) => {
         <BreadCrumb pagetitle = {career.title} pageslug='Career' pageBanner={`assets/img/menu-content/${menucareer?.menu_contents?.banner}`} /> 
         <Container className='py-5'>
           <Row>
-            <Col xs={12} lg={12}>
-              <div className="aboutTxt">
-                <p className="sub-title">Job Opening</p>
-                <p>Driving Growth through Quality</p>
-                <div dangerouslySetInnerHTML={{ __html: menucareer?.menu_contents?.description }} />
-              </div>
-            </Col>
-          </Row>
-          <Row className='pt-3'>
-            <Col xs={12} lg={6}>
-              <Row>
-                <Col xs={12} lg={4}>
-                <span className="bold-title">Level of Experience:</span><p> {career.experience}</p>
-                </Col>
-                <Col xs={12} lg={4}>
-                <span className="bold-title">Location:</span><p> {career.location}</p>
-                </Col>
-                <Col xs={12} lg={4}>
-                <span className="bold-title">Job Type:</span><p> Full Time</p>
-                </Col>
-              </Row>
-              <Row className='pt-2'>
-                <Col xs={12} lg={6}>  
-                    {(Array.isArray(career.required_skills) && career.required_skills.length > 0) ||
+            <Col xs={3}>
+              <div className='JobDetails_job_details__iwfqv'>
+                <h1>Job Details</h1>
+                <div className='JobDetails_job_info__fvW3O all_contents'>
+                  <span className="bold-title">Level of Experience:</span><p> {career.experience}</p>
+                </div>
+                <div className='JobDetails_job_info__fvW3O all_contents'>
+                  <span className="bold-title">Location:</span><p> {career.location}</p>
+                </div>
+                <div className='JobDetails_job_info__fvW3O all_contents'>
+                  <span className="bold-title">Job Type:</span><p> Full Time</p>
+                </div>
+                <div className='JobDetails_job_info__fvW3O all_contents'>
+                  {(Array.isArray(career.required_skills) && career.required_skills.length > 0) ||
                       (typeof career.required_skills === 'string' && career.required_skills.trim() !== '') ? (
                         <>
-                          <p className="bold-title">Required Skills</p>
+                          <p>Required Skills</p>
                           <ul>
                             {(Array.isArray(career.required_skills)
                               ? career.required_skills
@@ -153,12 +143,12 @@ const page = ({career, menucareer, contact}) => {
                           </ul>
                         </>
                       ) : null}
-                </Col>
-                <Col xs={12} lg={6}>
-                    {(Array.isArray(career.additional_skills) && career.additional_skills.length > 0) ||
+                </div>
+                <div className='JobDetails_job_info__fvW3O all_contents'>
+                  {(Array.isArray(career.additional_skills) && career.additional_skills.length > 0) ||
                       (typeof career.additional_skills === 'string' && career.additional_skills.trim() !== '') ? (
                         <>
-                          <p className="bold-title">Additional Skills</p>
+                          <p>Additional Skills</p>
                           <ul>
                             {(Array.isArray(career.additional_skills)
                               ? career.additional_skills
@@ -169,15 +159,19 @@ const page = ({career, menucareer, contact}) => {
                           </ul>
                         </>
                       ) : null}
-                </Col>
-              </Row>
-              <Row className='pt-2'>
-                <Col xs={12} lg={12}><p>We would be happy to hear from you, please fill in the form below or mail us your requirements on Email: <a href={`mailto:${contact.email}`}>{contact.email}</a>
-              </p></Col>
-              </Row>
+                </div>
+              </div>
             </Col>
-            <Col xs={12} lg={6}>
-              <form className="was-validate" onSubmit={handleSubmit}>
+            <Col xs={9}>
+            <div className='JobDetails_job_description__IGnJ9'>
+            <div className="aboutTxt">
+                <p className="sub-title">Job Opening</p>
+                <h1>Driving Growth through Quality</h1>
+                <div className='all_contents' dangerouslySetInnerHTML={{ __html: menucareer?.menu_contents?.description }} />
+                <span className='all_contents'>We would be happy to hear from you, please fill in the form below or mail us your requirements on Email: <a href={`mailto:${contact.email}`}>{contact.email}</a>
+              </span>
+              </div>
+              <form className="was-validate mt-4" onSubmit={handleSubmit}>
                 <input type="hidden" name="job_id" value={career.id} />
                   <Row> 
                     <Col xs={12} lg={6}>
@@ -242,7 +236,7 @@ const page = ({career, menucareer, contact}) => {
                   </Row>
                   <Row>
                     <Col xs={12} lg={3}>
-                      <button type="submit" className='red-btn w-100 mt-3'>Submit</button>
+                      <button type="submit" className='red-btn w-100 mt-3 SubmitBtn'>Submit</button>
                     </Col>
                   </Row>
                   <Row>
@@ -251,8 +245,11 @@ const page = ({career, menucareer, contact}) => {
                     </Col>
                   </Row>
               </form>
+            </div>
             </Col>
           </Row>
+          
+          
         </Container>
       </main>
     </>

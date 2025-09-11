@@ -84,24 +84,16 @@ const ContactUs = ({contactus}) => {
       />
       <main>
         <BreadCrumb pagetitle="Contact Us" pageBanner={contactus?.banner} />
-        <Container className='py-5'>
+        <Container className='py-5 contactPage'>
           <Row>
             <Col xs={12} lg={6}>
-              <div className='map-wrap'>
-
-                <iframe src={`${contactus?.url}`} width="100%" height="600" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
-
-              </div>
-
-            </Col>
-            <Col xs={12} lg={6}>
-              <form className="was-validate" onSubmit={handleSubmit}>
+              <form className="was-validate contact-frm" onSubmit={handleSubmit}>
                 <Row>
                   <Col xs={12}>
-                    <div className="aboutTxt">
-                      <p className="sub-title mb-0">{contactus?.slug}</p>
-                      <p>{contactus?.title}</p>
-                      <div className="gry-txt" dangerouslySetInnerHTML={{ __html: contactus?.short_desc }} />
+                    <div className="contactTxt">
+                      <p className="sub-title">{contactus?.slug}</p>
+                      <h1>{contactus?.title}</h1>
+                      <div className="gry--txt" dangerouslySetInnerHTML={{ __html: contactus?.short_desc }} />
                     </div>
                   </Col>
                   <Row className='row contact-form margin-top-8'>
@@ -149,13 +141,13 @@ const ContactUs = ({contactus}) => {
                       required 
                     />
                   </Col>
-                  <Col xs={12} lg={6}>
+                  <Col xs={12} lg={12}>
                     <label>Message <span className='text-danger'><b>*</b></span></label>
                     <textarea 
                     name="message" 
                     value={formData.message}
                     onChange={handleChange}
-                    className='form-control h-150'
+                    className='form-control h-150 mb-3'
                     required 
                     ></textarea>
                   </Col>
@@ -180,6 +172,26 @@ const ContactUs = ({contactus}) => {
                   </Col>
                 </Row>
               </form>
+
+            </Col>
+            <Col xs={12} lg={5}>
+              <div className='map-wrap contact-page-info'>
+
+                <Row>
+                  <Col>
+                    <p className="contact_popup_text__6IJDd"><b>Sales Inquiries</b> 
+                    <a class="contact_popup_link__IFKEk" href="tel:+91-33-2321-1380">+91-33-2321-1380</a>
+                    </p>
+                  </Col>
+                  <Col>
+                    <p className="contact_popup_text__6IJDd"><b>Customer Support</b> 
+                    <a class="contact_popup_link__IFKEk" href="mailto:beas@beas.co.in">beas@beas.co.in</a>
+                    </p>
+                  </Col>
+                </Row>
+                <iframe className='contactMap' src={`${contactus?.url}`} width="100%" height="400" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+
+              </div>
 
             </Col>
           </Row>

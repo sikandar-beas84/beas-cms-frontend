@@ -53,7 +53,7 @@ const page = ({industry, enrichedContents}) => {
                                         item?.casestudy?.data?.casestudy?.slug ? (
 
                                         <React.Fragment key={index}>
-                                            <Col xs={3}>
+                                            <Col xs={4}>
                                                 <div className='gigs_box'>
                                                     <div className='story-box'>
                                                         <Image width={550} height={200} src={`${env.BACKEND_BASE_URL}${item?.casestudy?.data?.casestudy?.image}`} alt='image' className='img-fluid' />
@@ -61,9 +61,7 @@ const page = ({industry, enrichedContents}) => {
                                                     <div className='p-3'>
                                                         <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
                                                             <p className='mt-3'>
-                                                            {item?.casestudy?.data?.casestudy?.title
-                                                            ? item.casestudy.data.casestudy.title.substring(0, 60) + "..."
-                                                            : ""}
+                                                                {item?.casestudy?.data?.casestudy?.title}
                                                             </p>
                                                             {item?.casestudy?.data?.casestudy?.slug ? (
                                                             // <Link

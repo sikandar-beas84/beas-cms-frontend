@@ -46,8 +46,8 @@ const page = ({service, enrichedChildren }) => {
                 <Row key={index1}>
                     <Col>
                         {/* <p className='title mb-3'>{service?.name}</p> */}
-                        <div dangerouslySetInnerHTML={{ __html: item1?.description }} />
-                        <div className='imageTextBlock'>
+                        <div className='ServicesPara mb-4' dangerouslySetInnerHTML={{ __html: item1?.description }} />
+                        <div className='imageTextBlock p-0'>
                             <Row>
                                 {item1?.menu_contents?.contents?.map((content, index) =>
                                 content?.extra_description ? (
@@ -60,10 +60,8 @@ const page = ({service, enrichedChildren }) => {
 
                                               <div className='p-3'>
                                             <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
-                                                    <p className='mt-3'>
-                                                    {content?.casestudy?.data?.casestudy?.title
-                                                            ? content.casestudy.data.casestudy.title.substring(0, 60) + "..."
-                                                            : ""}
+                                                    <p className='mt-0'>
+                                                        {content.casestudy?.data?.casestudy?.title}
                                                   </p>
                                                   {content.casestudy?.data?.casestudy?.slug ? (
                                                     

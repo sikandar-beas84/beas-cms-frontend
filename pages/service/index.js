@@ -36,7 +36,7 @@ const page = ({services, service}) => {
       />
       <main>
         <BreadCrumb pagetitle="Services" pageBanner={`assets/img/menu-content/${service?.menu_contents?.banner}`} />
-        <Container className='py-5'>
+        <Container className='py-5 serviceInfo_how-it-works__lcCAN'>
           {/* <Row>
             <Col>
               <p className='title mb-3'>Service Page</p>
@@ -52,7 +52,7 @@ const page = ({services, service}) => {
               <div className='serviceListBlock' key={index}>
                 <div className='serviceListBlockFirst'>
                   <div className='mediaimg'>
-                    <Image width={600} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.image}`} alt="image" className="img-fluid mb-5" />
+                    <Image width={600} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.image}`} alt="image" className="img-fluid" />
                   </div>
                 </div>
                 <div className='serviceListBlockSecond serviceInfo'>

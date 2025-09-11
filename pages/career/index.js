@@ -36,7 +36,7 @@ const career = ({careers, menucareer}) => {
             <Col>
               <p className="sub-title">{menucareer?.menu_contents?.title}</p>
               <p className='title mb-3'>Why Join Us?</p>
-              <div dangerouslySetInnerHTML={{ __html: menucareer?.menu_contents?.description }} />
+              <div className='all_contents' dangerouslySetInnerHTML={{ __html: menucareer?.menu_contents?.description }} />
             </Col>
           </Row>
           <Row>
@@ -44,26 +44,25 @@ const career = ({careers, menucareer}) => {
                 <div className="">
                   <Row>
                     <Col xs={12}>
-                      <ul className="service-block">
-                      { careers?.map((item,index)=>(                      
+                      <ul className="CareerList">
+                      { careers?.map((item,index)=>(    
+                        
+                        
                       <li key={index}>
-                          <div className="industy-block __list career-block-img">
-                            <div className="industy-block __top">
-                              <Image width={450} height={150} src={`${env.BACKEND_BASE_URL}${item?.image}`} alt="image" className="img-fluid" />
-                              <div className='industry-block__carrer-block'>
-                                <p><b>{item.title}</b></p>
-                                <span>{item.experience}</span>
-                              </div>
-                            </div>
-                            {item.id && (
-                              <Link href={`/career/${item.id}`} className="btn btn-outline-primary ms-auto">
-                                <ArrowUpRight />
+                        {item.id && (
+                              <Link href={`/career/${item.id}`} className="">
+                                <div className="Career_join_box_inner__wQyGi">
+                                  <div className="Career_join_section__j4tVW">
+                                    <Image width={450} height={150} src={`${env.BACKEND_BASE_URL}${item?.image}`} alt="image" className="img-fluid" />
+                                    <div className='Career_join_box__mRfXx'>
+                                      <p><b>{item.title}</b></p>
+                                      <span>{item.experience}</span>
+                                    </div>
+                                  </div>
+                                </div>
                               </Link>
                             )}
-                            {/* <div className="industy-block __bottom">
-                              <ArrowUpRight />
-                            </div> */}
-                          </div>
+                          
                         </li>
                         )) }
                     

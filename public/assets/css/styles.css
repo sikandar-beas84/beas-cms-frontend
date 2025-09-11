@@ -1491,7 +1491,7 @@ footer ul li {
   margin: 0 auto;
 }
 .about_thumb_img {
-    border-radius: 10px;
+    border-radius: 30px;
     margin-top: 40px;
 }
 .aboutusTxt img {
@@ -1569,6 +1569,7 @@ footer ul li {
     -moz-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.05);
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.05);
     background: #fff;
+        border-radius: 30px;
 }
 .counter_bx p {
     font-size: 33px;
@@ -1626,11 +1627,11 @@ footer ul li {
 .mis_cont {
     margin-top: 40px;
     border: 1px solid #efefef;
-    border-radius: 6px;
+    border-radius: 30px;
     padding: 0 25px 25px;
     display: flex;
     background: #fff;
-    border-bottom: 2px solid #0081d2;
+    border-bottom: 3px solid #0081d2;
     margin-bottom: 0;
 }
 .mis_cont .media_img {
@@ -1749,7 +1750,7 @@ footer {
     font-family: Roboto, sans-serif;
 }
 .nav-white-bg.fixed-top.shadow-sm {
-    border-top: 2px solid #0081d2;
+    border-top: 3px solid #0081d2;
 }
 a.nav-link div {
     background-color: #0081d2;
@@ -1839,14 +1840,14 @@ footer p {
 .gigs_box {
     width: 100%;
     padding: 0;
-    border: 1px solid #efefef;
-    border-bottom: 4px solid #0081d2;
     background: #fff;
     border-radius: 30px;
     margin-bottom: 30px;
+        box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.05);
+        border-bottom: 3px solid #0081d2;
 }
 .story-box img {
-    border-radius: 30px 30px 0 0;
+    border-radius: 30px;
     height: 200px;
 }
 .gigs_box a {
@@ -1857,10 +1858,9 @@ footer p {
     font-family: Roboto, sans-serif;
     text-decoration: none;
 }
-.gigs_box a, 
-.Learn_More_Link a {
+.gigs_box a, .Learn_More_Link a {
     position: relative;
-    margin: 0 auto;
+    margin: 0;
 }
 .gigs_box a:after, 
 .Learn_More_Link a:after {
@@ -1878,7 +1878,7 @@ footer p {
 }
 .gigs_box p {
     min-height: 52px;
-    text-align: center;
+    text-align: left;
 }
 .cmsPage_h1 {
     font-style: normal;
@@ -1916,3 +1916,325 @@ footer p {
     width: 100px;
 }
 /* end 10-09-25 */
+.title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 40px;
+    margin-bottom: 14px;
+    color: #161718;
+    font-family: Roboto, sans-serif;
+}
+.all_contents {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-size: 15.5px;
+    line-height: 26px;
+    color: #5B5C60;
+    margin: 0 auto 10px;
+    text-align: justify;
+}
+.Career_join_box_inner__wQyGi {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+        border: 2px solid #efefef;
+    border-radius: 30px;
+    padding: 25px 32px;
+    margin-bottom: 32px;
+}
+.CareerList {
+    padding: 30px 0 0 0;
+    margin: 0;
+    list-style-type: none;
+    column-count: 3;
+}
+.Career_join_box__mRfXx p {
+    font-size: 21px;
+    color: #161718;
+    font-weight: 500;
+    margin-bottom: 13px;
+    font-family: Roboto, sans-serif;
+}
+.Career_join_box__mRfXx span {
+    font-style: normal;
+    font-size: 15.5px;
+    line-height: 26px;
+    color: #5B5C60;
+    font-family: Roboto, sans-serif;
+}
+.Career_join_section__j4tVW {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    gap: 15px;
+}
+.Career_join_section__j4tVW img {
+  width: 48px;
+  height: 48px;
+}
+.CareerList li a {  
+  text-decoration: none;
+}
+.CareerList li a p b {
+  font-size: 18px;
+    color: #161718;
+    font-weight: 500;
+    margin-bottom: 13px;
+    font-family: Roboto, sans-serif;
+}
+.CareerList li a span {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-size: 15.5px;
+    line-height: 26px;
+    color: #5B5C60;
+    margin: 0 auto 10px;
+    text-align: justify;
+}
+.CareerList li a:hover, 
+.CareerList li a:hover p, 
+.CareerList li a:hover p b {
+  color: #0081d2;
+}
+
+.JobDetails_job_details__iwfqv {
+    border-right: 1px solid #edeff0;
+    height: 100%;
+    padding-right: 80px;
+}
+.JobDetails_job_description__IGnJ9 {
+    padding-left: 50px;
+}
+
+.JobDetails_job_description__IGnJ9 h1, 
+.JobDetails_job_details__iwfqv h1 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 40px;
+    margin-bottom: 14px;
+    color: #161718;
+    font-family: Roboto, sans-serif;
+}
+.JobDetails_job_info__fvW3O ul {
+  margin: 0;
+}
+.JobDetails_job_info__fvW3O  p {
+  font-weight: 500;
+}
+.JobDetails_job_info__fvW3O.all_contents {
+    text-align: left;
+}
+.SubmitBtn {
+    border-radius: 6px;
+    width: 160px!important;
+    height: 55px;
+}
+.was-validate .form-control {
+    padding: 13px .75rem;
+    border-radius: 8px;
+        border: 1px solid #c1ccd2;
+}
+.was-validate label {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-size: 15.5px;
+    color: #5B5C60;
+    margin: 0 auto 10px;
+}
+.Career_join_box_inner__wQyGi:hover {
+  border-color: #0081d2;
+}
+form.was-validate {
+    background: #f3f9fd;
+    border-radius: 30px;
+    padding: 25px;
+}
+.Industries_how-it-works__lcCAN div {
+  padding: 0;
+  margin: 0;
+}
+.Industries_how-it-works__lcCAN div img {
+  width: 100%;
+  margin: 0!important;
+  height: 400px;
+}
+
+.Industries_how-it-works__lcCAN .row:nth-child(odd) img {
+  border-radius: 60px 0 0 60px;
+}
+.Industries_how-it-works__lcCAN .row:nth-child(even) img {
+  border-radius: 0 60px 60px 0;
+}
+.Industries_how-it-works__lcCAN .row:nth-child(1) img {
+  border-radius: 60px 60px 0 60px;
+}
+.Industries_how-it-works__lcCAN .row:nth-child(6) img {
+  border-radius: 0 60px 60px 60px;
+}
+.Industries_how-it-works__lcCAN .row:nth-child(odd) .industriesInfo {
+    padding-left: 70px;
+    padding-right: 0;
+}
+.Industries_how-it-works__lcCAN .row:nth-child(even) .industriesInfo {
+    padding-right: 70px;
+    padding-left: 0;
+}
+
+.serviceInfo_how-it-works__lcCAN div img {
+  width: 100%;
+  margin: 0!important;
+  height: 400px;
+}
+.serviceInfo_how-it-works__lcCAN .serviceListBlock:nth-child(odd) img {
+  border-radius: 60px 0 0 60px;
+}
+.serviceInfo_how-it-works__lcCAN .serviceListBlock:nth-child(even) img {
+  border-radius: 0 60px 60px 0;
+}
+.serviceInfo_how-it-works__lcCAN .serviceListBlock:nth-child(1) img {
+  border-radius: 60px 60px 0 60px;
+}
+.serviceInfo_how-it-works__lcCAN .serviceListBlock:nth-child(9) img {
+  border-radius: 60px 0  60px 60px;
+}
+.serviceInfo_how-it-works__lcCAN .serviceListBlock:nth-child(odd) .serviceInfo {
+    padding-left: 70px;
+    padding-right: 0;
+    padding-bottom: 0!important;
+    margin-bottom: 0!important;
+    padding-top: 1.5rem !important;
+}
+.serviceInfo_how-it-works__lcCAN .serviceListBlock:nth-child(even) .serviceInfo {
+    padding-right: 70px;
+    padding-left: 0;
+    padding-bottom: 0!important;
+    margin-bottom: 0!important;
+    padding-top: 1.5rem !important;
+}
+.ServicesPara {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-size: 15.5px;
+    line-height: unset;
+    color: #5B5C60;
+}
+.ServicesPara h3 {
+      font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 40px;
+    margin-bottom: 0;
+    color: #161718;
+    font-family: Roboto, sans-serif;
+}
+.contact-page-info {
+    background: #f3f9fd;
+    border-radius: 30px;
+    padding: 25px;
+}
+form.was-validate.contact-frm {
+  background: #fff;
+    border-radius: 0px;
+    padding: 0px;
+}
+iframe.contactMap {
+    border-radius: 30px;
+    border: 2px solid #efefef;
+    padding: 4px;
+}
+.contact_popup_text__6IJDd b {
+  display: block;
+}
+.contactPage {
+  font-family: Roboto, sans-serif;
+}
+.contact_popup_text__6IJDd b {
+  font-style: normal;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #161718;
+    font-family: Roboto, sans-serif;
+}
+.contact_popup_text__6IJDd a {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-size: 15.5px;
+    line-height: 26px;
+        color: #0081d2;
+    margin: 0 auto 10px;
+    text-decoration: none;
+}
+.contactTxt h1 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 40px;
+    margin-bottom: 14px;
+    color: #161718;
+    font-family: Roboto, sans-serif;
+}
+.gry--txt {
+      font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-size: 15.5px;
+    line-height: 26px;
+    color: #5B5C60;
+    margin: 0 auto 10px;
+    text-align: justify;
+}
+
+.accordion-item {
+    border: 2px solid #efefef!important;
+    margin-bottom: 15px;
+    border-radius: 30px!important;
+    overflow: hidden;
+}
+.accordion-button:not(.collapsed) {
+    background-color: transparent;
+}
+.accordion-header, .accordion-header button {
+    font-size: 18px;
+    color: #161718!important;
+    font-weight: 500;
+    margin-bottom: 13px;
+    font-family: Roboto, sans-serif;
+    border: 0!important;
+    margin-bottom: 0;
+}
+.accordion-button:not(.collapsed) {
+    margin-bottom: 0;
+    box-shadow: unset;
+}
+.accordion-body {
+    padding-top: 0;
+        font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-size: 15.5px;
+    line-height: 26px;
+    color: #5B5C60;
+    margin: 0 auto 10px;
+    text-align: justify;
+}
+.serviceDetailsWrap img, 
+.serviceDetailsWrap {
+    border-radius: 30px;
+    overflow: hidden;
+}
+.serviceDetailsWrap {
+      border: 2px solid #efefef;
+}
+.service-left-panel {
+    background: #f3f9fd;
+    border-radius: 30px;
+}
+.vertical-box li {
+    padding: 7.5px 12.5px;
+    border-radius: 30px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-size: 15.5px;
+    color: #5B5C60;
+}
+/* end 11-09-25 */
