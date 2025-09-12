@@ -10,7 +10,7 @@ import { env } from '../constants/common';
 import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';
 
-const page = ({services, service}) => {
+const Service = ({services, service}) => {
   const router = useRouter();
     if (router.isFallback) {
       return <div>Loading...</div>;
@@ -52,7 +52,7 @@ const page = ({services, service}) => {
               <div className='serviceListBlock' key={index}>
                 <div className='serviceListBlockFirst'>
                   <div className='mediaimg'>
-                    <Image width={600} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.image}`} alt="image" className="img-fluid" />
+                    <Image width={600} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.image}`} alt="image" className="img-fluid" loading="lazy" />
                   </div>
                 </div>
                 <div className='serviceListBlockSecond serviceInfo'>
@@ -77,7 +77,7 @@ const page = ({services, service}) => {
   )
 }
 
-export default page
+export default React.memo(Service);
 
 export async function getServerSideProps() {
     const res = await HomeService.homePage()

@@ -10,7 +10,7 @@ import Link from 'next/link';
 import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';
 
-const page = ({casestudy, menucasestudy}) => {
+const Casestudy = ({casestudy, menucasestudy}) => {
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -43,7 +43,7 @@ const page = ({casestudy, menucasestudy}) => {
           <Col xs={12} lg={5}>
             
              <div className='serviceDetailsWrap'>
-              <Image width={600} height={150} src={`${env.BACKEND_BASE_URL}${casestudy?.image}`} alt='image' className='img-fluid' />
+              <Image width={600} height={150} src={`${env.BACKEND_BASE_URL}${casestudy?.image}`} alt='image' className='img-fluid' loading="lazy" />
             </div>
             <div className='service-left-panel vertical-box my-3'>
               <p className='title'>Technology Platform</p>
@@ -52,10 +52,6 @@ const page = ({casestudy, menucasestudy}) => {
                 <li key={index}>{item}</li>
                 ))}
               </ul>
-            </div>
-            <div className='service-left-panel blue-box'>
-             <p> Want A <br/> Project Like this? </p>
-             <a href='#' className='red-btn'>Call Now</a>
             </div>
           </Col>
           <Col xs={12} lg={7}>
@@ -97,7 +93,7 @@ const page = ({casestudy, menucasestudy}) => {
   )
 }
 
-export default page
+export default React.memo(Casestudy);
 
 export async function getServerSideProps({ query  }) {
   const { id } = query ;

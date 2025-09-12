@@ -12,7 +12,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';
 import { Buffer } from "buffer";
-const page = ({career, menucareer, contact, decodedId}) => {
+const Page = ({career, menucareer, contact, decodedId}) => {
 
   const router = useRouter();
   if (router.isFallback) {
@@ -256,7 +256,7 @@ const page = ({career, menucareer, contact, decodedId}) => {
   )
 }
 
-export default page
+export default React.memo(Page);
 
 export async function getServerSideProps({ params }) {
   const { slug } = params;

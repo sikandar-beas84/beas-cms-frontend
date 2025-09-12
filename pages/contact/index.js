@@ -209,7 +209,7 @@ const ContactUs = ({contactus}) => {
   )
 }
 
-export default ContactUs
+export default React.memo(ContactUs);
 
 export async function getServerSideProps() {
   const res = await HomeService.contactPage();

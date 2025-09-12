@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { env } from '../constants/common';
 
 const BannerCarousal = ({ page, technologiya, clients, projects, testimonials }) => {
+
   const createSliderSettings = (slidesToShowDefault, sliderDot = false) => ({
     dots: sliderDot,
     infinite: true,
@@ -173,4 +174,4 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials })
   );
 };
 
-export default BannerCarousal;
+export default React.memo(BannerCarousal);

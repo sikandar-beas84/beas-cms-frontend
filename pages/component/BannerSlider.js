@@ -58,4 +58,4 @@ const BannerSlider = ({bannerSlide}) => {
   )
 }
 
-export default BannerSlider
+export default React.memo(BannerSlider);

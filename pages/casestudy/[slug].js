@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 
 const MAX_VISIBLE = 10; // show 10 numbers at a time
 
-const page = ({ casestudy, menucasestudy, projects, currentSlug }) => {
+const Page = ({ casestudy, menucasestudy, projects, currentSlug }) => {
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -67,6 +67,7 @@ const page = ({ casestudy, menucasestudy, projects, currentSlug }) => {
                   src={`${env.BACKEND_BASE_URL}${casestudy?.image}`}
                   alt="image"
                   className="img-fluid"
+                  loading="lazy"
                 />
               </div>
 
@@ -129,6 +130,7 @@ const page = ({ casestudy, menucasestudy, projects, currentSlug }) => {
                         src={`${env.BACKEND_BASE_URL}${casestudy?.samplescreen}`}
                         alt="image"
                         className="img-fluid"
+                        loading="lazy"
                       />
                     )}
                   </Accordion.Body>
@@ -180,7 +182,7 @@ const page = ({ casestudy, menucasestudy, projects, currentSlug }) => {
   );
 };
 
-export default page;
+export default React.memo(Page);
 
 export async function getServerSideProps({ params }) {
   const { slug } = params;

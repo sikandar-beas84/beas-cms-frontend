@@ -112,4 +112,4 @@ const Header = ({homeData}) => {
   )
 }
 
-export default Header
+export default React.memo(Header);

@@ -30,4 +30,4 @@ const BreadCrumb = ({pagetitle, pageslug, pageBanner}) => {
   )
 }
 
-export default BreadCrumb
+export default React.memo(BreadCrumb);

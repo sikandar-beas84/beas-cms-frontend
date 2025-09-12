@@ -43,7 +43,7 @@ const Indutries = ({industries}) => {
             
           <Col xs={12} lg={6}>
             <div className='mediaimg'>
-              <Image width={600} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.image}`} alt="image" className="img-fluid" />
+              <Image width={600} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.image}`} alt="image" className="img-fluid" loading="lazy" />
             </div>
           </Col>
           <Col xs={12} lg={6}>
@@ -76,7 +76,7 @@ const Indutries = ({industries}) => {
               </Col>        
               <Col xs={12} lg={6}>
                 <div className='mediaimg'>
-                  <Image width={600} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.image}`} alt="image" className="img-fluid mb-5" />
+                  <Image width={600} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.image}`} alt="image" className="img-fluid mb-5" loading="lazy" />
                 </div>
               </Col>
               </>
@@ -92,7 +92,7 @@ const Indutries = ({industries}) => {
   )
 }
 
-export default Indutries
+export default React.memo(Indutries);
 
 export async function getServerSideProps() {
   const res = await HomeService.menuIndustryPage()

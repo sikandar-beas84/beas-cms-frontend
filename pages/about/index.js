@@ -7,7 +7,7 @@ import { env } from '../constants/common';
 import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';
 
-const page = ({aboutus, experts}) => {
+const AboutUs = ({aboutus, experts}) => {
     const router = useRouter();
     if (router.isFallback) {
       return <div>Loading...</div>;
@@ -49,7 +49,7 @@ const page = ({aboutus, experts}) => {
                         <Col>
                             <div className="aboutusTxt">
 
-                                <Image width={450} height={150} src={`${env.BACKEND_BASE_URL}${aboutus?.image}`} className="img-fluid about_thumb_img" alt="image" />
+                                <Image width={450} height={150} src={`${env.BACKEND_BASE_URL}${aboutus?.image}`} className="img-fluid about_thumb_img" alt="image" loading="lazy" />
                                 <div className="abut_all_contents">
                                     <p className="sub-title">About Our Company</p>
                                     <h1>{aboutus?.menu_contents?.title}</h1>
@@ -126,7 +126,7 @@ const page = ({aboutus, experts}) => {
                                     { aboutus?.menu_contents?.contents.map((item,index)=>(
                                     <div className='white-card mis_cont' key={index}>
                                         <div className='media_img'>
-                                            <Image width={450} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.extra_icon}`} className="img-fluid" alt="image" />
+                                            <Image width={450} height={150} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.extra_icon}`} className="img-fluid" alt="image" loading="lazy" />
                                         </div>
                                         <div className='media-body'>
                                             <p className=''>{item?.extra_title}</p>
@@ -173,7 +173,7 @@ const page = ({aboutus, experts}) => {
     )
 }
 
-export default page
+export default React.memo(AboutUs);
 
 export async function getServerSideProps() {
     const res = await HomeService.menuAboutusPage();

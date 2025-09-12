@@ -12,7 +12,7 @@ import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';
 import { postService } from "../configs/FetchRequest";
 
-const page = ({industry, enrichedContents}) => {
+const Page = ({industry, enrichedContents}) => {
 
     console.log("industry=",industry);
 
@@ -56,7 +56,7 @@ const page = ({industry, enrichedContents}) => {
                                             <Col xs={4}>
                                                 <div className='gigs_box'>
                                                     <div className='story-box'>
-                                                        <Image width={550} height={200} src={`${env.BACKEND_BASE_URL}${item?.casestudy?.data?.casestudy?.image}`} alt='image' className='img-fluid' />
+                                                        <Image width={550} height={200} src={`${env.BACKEND_BASE_URL}${item?.casestudy?.data?.casestudy?.image}`} alt='image' className='img-fluid' loading="lazy" />
                                                     </div>
                                                     <div className='p-3'>
                                                         <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
@@ -104,7 +104,7 @@ const page = ({industry, enrichedContents}) => {
     )
 }
 
-export default page
+export default React.memo(Page);
 
 export async function getServerSideProps({ params }) {
     const { slug } = params; // slug is now an array

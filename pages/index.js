@@ -4,13 +4,9 @@ import Container from 'react-bootstrap/Container';
 import { Col, Row } from "react-bootstrap";
 import BannerSlider from "./component/BannerSlider";
 import BannerCarousal from "./component/BannerCarousal";
-import ScrollText from "./component/ScrollText";
-import VerticalTabs from "./component/VerticalTab";
 import { ArrowUpRight } from "react-feather";
 import Globe from "./component/Globe";
-import { motion, useScroll, useTransform } from 'framer-motion';
-import LogoZoom from "./component/LogoZoom";
-import { HealthIcon } from "./SVGIcons";
+import { useScroll, useTransform } from 'framer-motion';
 import Nav from 'react-bootstrap/Nav';
 import HomeService from "./services/Home";
 import { env } from './constants/common';
@@ -19,7 +15,7 @@ import SEO from '../components/SEO';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-export default function Home({homeData}) {
+function Home({homeData}) {
   const router = useRouter();
     if (router.isFallback) {
       return <div>Loading...</div>;
@@ -81,11 +77,11 @@ export default function Home({homeData}) {
             <Row>
               <Col xs={12} lg={6}>
                 <div className="aboutImg">
-                  <Image width={450} height={380} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${homeData?.aboutus?.menu_contents.image}`} alt="image" />
-                  <Image width={250} height={180} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${homeData?.aboutus?.menu_contents.icon}`} alt="image" />
+                  <Image width={450} height={380} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${homeData?.aboutus?.menu_contents.image}`} alt="image" loading="lazy" />
+                  <Image width={250} height={180} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${homeData?.aboutus?.menu_contents.icon}`} alt="image" loading="lazy" />
                   <div className="experience-year">
                     <div className="experience-year__icon">
-                      <Image width={600} height={100} src="/assets/images/trophy.png" alt="image" />
+                      <Image width={600} height={100} src="/assets/images/trophy.png" alt="image" loading="lazy" />
                     </div>
                     <div className="experience-year__content">
                       <h6 className="circle rotateText">
@@ -164,6 +160,7 @@ export default function Home({homeData}) {
                         src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.icon}`} 
                         className="img-fluid" 
                         alt="image" 
+                        loading="lazy"
                         style={{
                           filter: 'opacity(0.8) drop-shadow(0 0 0 white) brightness(7.5)',
                         }}
@@ -200,7 +197,7 @@ export default function Home({homeData}) {
                           <div className="industy-block __list" style={{borderRadius:'10px'}}>
                             <div className="industy-block __top">
                               <div className='iimage-wrapper'>
-                              <Image width={600} height={100} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.icon}`} alt="image" className="img-fluid" />
+                              <Image width={600} height={100} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.icon}`} alt="image" className="img-fluid" loading="lazy" />
                               </div>
                             </div>
                             <div className="industy-block __bottom">
@@ -292,8 +289,8 @@ export default function Home({homeData}) {
         </section>
         <section className="pad-top-50 section-bg">
           <div className="service-bg-shape">
-            <Image width={600} height={100} src="/assets/images/logo-shape.png" alt="image" className="img-fluid" />
-            <Image width={600} height={100} src="/assets/images/logo-shape.png" alt="image" className="img-fluid" />
+            <Image width={600} height={100} src="/assets/images/logo-shape.png" alt="image" className="img-fluid" loading="lazy"/>
+            <Image width={600} height={100} src="/assets/images/logo-shape.png" alt="image" className="img-fluid" loading="lazy" />
           </div>
           <Container>
             <Row className="project-wrap mb-4">
@@ -356,6 +353,7 @@ export default function Home({homeData}) {
   );
 }
 
+export default React.memo(Home);
 
 export async function getServerSideProps() {
 

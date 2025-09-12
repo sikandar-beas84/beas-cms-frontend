@@ -11,7 +11,7 @@ import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';
 import { Buffer } from "buffer";
 
-const career = ({careers, menucareer}) => {
+const Career = ({careers, menucareer}) => {
   const router = useRouter();
     if (router.isFallback) {
       return <div>Loading...</div>;
@@ -55,7 +55,7 @@ const career = ({careers, menucareer}) => {
                               <Link href={`/career/${encodedId}`} className="">
                                 <div className="Career_join_box_inner__wQyGi">
                                   <div className="Career_join_section__j4tVW">
-                                    <Image width={450} height={150} src={`${env.BACKEND_BASE_URL}${item?.image}`} alt="image" className="img-fluid" />
+                                    <Image width={450} height={150} src={`${env.BACKEND_BASE_URL}${item?.image}`} alt="image" className="img-fluid" loading="lazy" />
                                     <div className='Career_join_box__mRfXx'>
                                       <p><b>{item.title}</b></p>
                                       <span>{item.experience}</span>
@@ -82,7 +82,7 @@ const career = ({careers, menucareer}) => {
   )
 }
 
-export default career
+export default React.memo(Career);
 
 export async function getServerSideProps() {
   const res = await HomeService.menuCareerPage();

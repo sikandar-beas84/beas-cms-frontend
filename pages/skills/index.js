@@ -1,13 +1,12 @@
 import React from 'react'
 import BreadCrumb from '../component/BreadCrumb'
 import { Container, Row, Col } from 'react-bootstrap'
-import Image from 'next/image';
 import HomeService from '../services/Home';
 import { env } from '../constants/common';
 import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';
 
-const page = ({skills}) => {
+const Page = ({skills}) => {
   const router = useRouter();
     if (router.isFallback) {
       return <div>Loading...</div>;
@@ -61,7 +60,7 @@ const page = ({skills}) => {
   )
 }
 
-export default page
+export default React.memo(Page);
 
 export async function getServerSideProps() {
   const res = await HomeService.menuSkillPage();

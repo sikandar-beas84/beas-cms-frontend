@@ -127,4 +127,4 @@ const Footer = ({homeData}) => {
   )
 }
 
-export default Footer
+export default React.memo(Footer);

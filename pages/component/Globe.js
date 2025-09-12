@@ -98,7 +98,7 @@ const Globe = ({ width = 800, height = 800 }) => {
     return <svg ref={svgRef}></svg>;
 };
 
-export default Globe;
+export default React.memo(Globe);
 
 // components/Globe.js
 // import React, { useEffect, useRef } from 'react';

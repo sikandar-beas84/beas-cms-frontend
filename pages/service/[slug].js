@@ -12,9 +12,7 @@ import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';
 import { postService } from "../configs/FetchRequest";
 
-const page = ({service, enrichedChildren }) => {
-
-    
+const Page = ({service, enrichedChildren }) => {
 
     const router = useRouter();
     if (router.isFallback) {
@@ -55,7 +53,7 @@ const page = ({service, enrichedChildren }) => {
                                         <Col xs={3}>
                                             <div className='gigs_box'>
                                                 <div className='story-box'>
-                                                  <Image width={550} height={50} src={`${env.BACKEND_BASE_URL}${content.casestudy?.data?.casestudy?.image}`} alt='image' className='img-fluid' />
+                                                  <Image width={550} height={50} src={`${env.BACKEND_BASE_URL}${content.casestudy?.data?.casestudy?.image}`} alt='image' className='img-fluid' loading="lazy" />
                                               </div>
 
                                               <div className='p-3'>
@@ -100,7 +98,7 @@ const page = ({service, enrichedChildren }) => {
     )
 }
 
-export default page
+export default React.memo(Page);
 
 export async function getServerSideProps({ params }) {
     const { slug } = params;
