@@ -9,6 +9,7 @@ import HomeService from '../services/Home';
 import { env } from '../constants/common';
 import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';
+import { Buffer } from "buffer";
 
 const career = ({careers, menucareer}) => {
   const router = useRouter();
@@ -45,12 +46,13 @@ const career = ({careers, menucareer}) => {
                   <Row>
                     <Col xs={12}>
                       <ul className="CareerList">
-                      { careers?.map((item,index)=>(    
+                      { careers?.map((item,index)=>{
                         
-                        
-                      <li key={index}>
-                        {item.id && (
-                              <Link href={`/career/${item.id}`} className="">
+                        const encodedId = Buffer.from(item.id.toString()).toString("base64");
+                        return(
+                        <li key={index}>
+                          {item.id && (
+                              <Link href={`/career/${encodedId}`} className="">
                                 <div className="Career_join_box_inner__wQyGi">
                                   <div className="Career_join_section__j4tVW">
                                     <Image width={450} height={150} src={`${env.BACKEND_BASE_URL}${item?.image}`} alt="image" className="img-fluid" />
@@ -64,7 +66,8 @@ const career = ({careers, menucareer}) => {
                             )}
                           
                         </li>
-                        )) }
+                        );
+                      }) }
                     
                       </ul>
 

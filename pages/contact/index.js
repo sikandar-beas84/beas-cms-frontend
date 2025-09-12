@@ -26,6 +26,7 @@ const ContactUs = ({contactus}) => {
   });
 
   const [status, setStatus] = useState('');
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -58,9 +59,11 @@ const ContactUs = ({contactus}) => {
 
       if (res.ok) {
         setStatus('✅ Message sent successfully!');
+        setErrors({});
         setFormData({ name: '', email: '', phone: '', subject: '', message: '', file: '' });
       } else {
         setStatus(`❌ Error: ${result.message || 'Failed to send'}`);
+        setErrors(result.error);
       }
     } catch (err) {
       console.error(err);
@@ -107,6 +110,7 @@ const ContactUs = ({contactus}) => {
                       className='form-control mb-3'
                       required 
                     />
+                    {errors.name && (<p className='error_message'>{errors.name[0]}</p>)}
                   </Col>
                   <Col xs={12} lg={6}>
                     <label>Email <span className='text-danger'><b>*</b></span></label>
@@ -118,6 +122,7 @@ const ContactUs = ({contactus}) => {
                       className='form-control mb-3'
                       required 
                     />
+                    {errors.email && (<p className='error_message'>{errors.email[0]}</p>)}
                   </Col>
                   <Col xs={12} lg={6}>
                     <label>Phone No <span className='text-danger'><b>*</b></span></label>
@@ -129,6 +134,7 @@ const ContactUs = ({contactus}) => {
                       className='form-control mb-3'
                       required 
                     />
+                    {errors.phone && (<p className='error_message'>{errors.phone[0]}</p>)}
                   </Col>
                   <Col xs={12} lg={6}>
                     <label>Subject <span className='text-danger'><b>*</b></span></label>
@@ -140,6 +146,7 @@ const ContactUs = ({contactus}) => {
                       className='form-control mb-3'
                       required 
                     />
+                    {errors.subject && (<p className='error_message'>{errors.subject[0]}</p>)}
                   </Col>
                   <Col xs={12} lg={12}>
                     <label>Message <span className='text-danger'><b>*</b></span></label>
@@ -150,6 +157,7 @@ const ContactUs = ({contactus}) => {
                     className='form-control h-150 mb-3'
                     required 
                     ></textarea>
+                    {errors.message && (<p className='error_message'>{errors.message[0]}</p>)}
                   </Col>
                   <Col xs={12} lg={6}>
                     <label>Choose a file: <span className='text-danger'><b>*</b></span></label>
@@ -161,7 +169,7 @@ const ContactUs = ({contactus}) => {
                         className='form-control mb-3' 
                       />
                       <p className='bold-title' style={{fontSize:'12px'}}>Attach files: (File size up to 3 MB. Formats: doc, docx, pdf, ppt, pptx)</p>
-                    
+                      {errors.file && (<p className='error_message'>{errors.file[0]}</p>)}
                   </Col>
                   </Row>
                   <Col xs={12} lg={3}>

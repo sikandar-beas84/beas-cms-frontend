@@ -333,7 +333,7 @@ export default function Home({homeData}) {
           <Container>
             <Row>
               <Col xs={12} lg={12}>
-                <p className="title-block">Core Clients</p>
+                <p className="title-block">Esteemed Clientele</p>
               </Col>
               <Col xs={12} lg={12}>
 

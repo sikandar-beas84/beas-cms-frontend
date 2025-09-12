@@ -11,8 +11,8 @@ import { env } from '../constants/common';
 import ReCAPTCHA from 'react-google-recaptcha';
 import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';
-
-const page = ({career, menucareer, contact}) => {
+import { Buffer } from "buffer";
+const page = ({career, menucareer, contact, decodedId}) => {
 
   const router = useRouter();
   if (router.isFallback) {
@@ -58,7 +58,7 @@ const page = ({career, menucareer, contact}) => {
       data.append(key, formData[key]);
     }
     data.append('recaptcha_token', captchaToken);
-    data.append('job_id', career.id);
+    data.append('job_id', decodedId);
     
     // for (let [key, value] of data.entries()) {
     //   console.log(`${key}:`, value);
@@ -172,7 +172,7 @@ const page = ({career, menucareer, contact}) => {
               </span>
               </div>
               <form className="was-validate mt-4" onSubmit={handleSubmit}>
-                <input type="hidden" name="job_id" value={career.id} />
+                {/* <input type="hidden" name="job_id" value={slug} /> */}
                   <Row> 
                     <Col xs={12} lg={6}>
                       <label>Name <span className='text-danger'><b>*</b></span></label>
@@ -261,6 +261,14 @@ export default page
 export async function getServerSideProps({ params }) {
   const { slug } = params;
 
+  // Decode Base64 slug to original ID
+  let decodedId;
+  try {
+    decodedId = Buffer.from(slug, "base64").toString("utf-8");
+  } catch (error) {
+    return { notFound: true };
+  }
+
   const res = await HomeService.menuCareerPage();
   const menucareer = res.data?.career || [];
 
@@ -270,7 +278,7 @@ export async function getServerSideProps({ params }) {
   const result = await HomeService.contactPage();
   const contact = result.data?.contact || [];
   // Find index of current project by matching the ID (slug)
-  const career = careers.find((item) => item.id.toString() === slug);
+  const career = careers.find((item) => item.id.toString() === decodedId);
 
   if (!career) {
     return {
@@ -282,7 +290,8 @@ export async function getServerSideProps({ params }) {
     props: {
       career,
       menucareer,
-      contact
+      contact,
+      decodedId
     },
   };
 }
