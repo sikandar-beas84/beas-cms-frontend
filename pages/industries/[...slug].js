@@ -44,7 +44,7 @@ const Page = ({industry, enrichedContents}) => {
                 <Container className='py-5'>
                     <Row>
                         <Col>
-                            <div class="cmsPage_h1">Industries</div>
+                            {/* <div class="cmsPage_h1">Industries</div> */}
                             {/* <p className='title mb-3'>{industry?.name}</p> */}
                             <div className='IndustriesPara mb-4' dangerouslySetInnerHTML={{ __html: industry?.description }} />
                             <div className=''>

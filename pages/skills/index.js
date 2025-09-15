@@ -1,12 +1,14 @@
 import React from 'react'
 import BreadCrumb from '../component/BreadCrumb'
 import { Container, Row, Col } from 'react-bootstrap'
+import Image from 'next/image';
 import HomeService from '../services/Home';
 import { env } from '../constants/common';
 import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';
 
-const Page = ({skills}) => {
+const Skills = ({skills}) => {
+
   const router = useRouter();
     if (router.isFallback) {
       return <div>Loading...</div>;
@@ -37,7 +39,7 @@ const Page = ({skills}) => {
                          */}
                         <div className="aboutTxt">
                             <p className="sub-title">Specality Of Our Company</p>
-                            <p>{skills?.menu_contents?.title}</p>
+                            <h1>{skills?.menu_contents?.title}</h1>
                             <div dangerouslySetInnerHTML={{ __html: skills?.description }} />
                         </div>
                         <div className='clear'></div>
@@ -46,13 +48,49 @@ const Page = ({skills}) => {
 
             </Row>
         </Container>
-        <section className='service-left-panel-curve pad-150'>
+        {/* <section className='service-left-panel-curve pad-150'> */}
+          <section className=''>
             <Container>
-                <Row>
+              {/* <Row>
+                { skills?.menu_contents?.contents?.map((item,index) => (
+                <Col xs={3} key={index}>
+                  <div className='skills_directory_skill_box__VxXI9'>
+                    <div className='icon__kKN_7'>
+                      <img src={`/assets/images/skills/skills${index+1}.png`}></img>
+                    </div>
+                    <h1>{item?.extra_title}</h1>
+                    <p>{item?.extra_description}</p>
+                  </div>
+                </Col>
+                
+              )) }
+              </Row> */}
+
+              <div className='tecnology-all'>
+                <ul>
+                  { skills?.menu_contents?.contents?.map((item,index) => {
+                  const randomNum = (index % 6) + 1;
+                  return(
+                  <li key={index}>
+                    <a href='#'>
+                      <div className='tech-head'>
+                        <span className={`coloe_t${randomNum}`}>
+                        <img src={`/assets/images/skills/skills${index+1}.png`}></img>
+                        </span>
+                        <p>{item?.extra_title}</p>
+                      </div>
+                      <p>{item?.extra_description}</p>
+                    </a>
+                  </li>);
+                  })}
+                </ul>
+              </div>
+
+                {/* <Row>
                     <Col xs={12} className='text-center mb-5'>
                     {<div dangerouslySetInnerHTML={{ __html: skills?.menu_contents?.description }} />}
                     </Col>
-                </Row>
+                </Row> */}
             </Container>
         </section>
       </main>
@@ -60,7 +98,7 @@ const Page = ({skills}) => {
   )
 }
 
-export default React.memo(Page);
+export default React.memo(Skills);
 
 export async function getServerSideProps() {
   const res = await HomeService.menuSkillPage();

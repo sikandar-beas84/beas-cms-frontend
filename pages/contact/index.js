@@ -1,9 +1,8 @@
 import React, {useState } from 'react'
 import { Container } from 'react-bootstrap'
 import { Col, Row } from "react-bootstrap";
-import { ArrowUpRight } from "react-feather";
 import BreadCrumb from '../component/BreadCrumb';
-import Link from 'next/link';
+import { Mail, PhoneCall } from 'react-feather'
 import HomeService from '../services/Home';
 import { env } from '../constants/common';
 import SEO from '../../components/SEO';
@@ -185,16 +184,28 @@ const ContactUs = ({contactus}) => {
             <Col xs={12} lg={5}>
               <div className='map-wrap contact-page-info'>
 
-                <Row>
+              <Row>
                   <Col>
-                    <p className="contact_popup_text__6IJDd"><b>Sales Inquiries</b> 
-                    <a class="contact_popup_link__IFKEk" href="tel:+91-33-2321-1380">+91-33-2321-1380</a>
-                    </p>
+                  <div className='SalesInquiries'>
+                    <span><PhoneCall /></span>
+                    <div>
+                      <p className="contact_popup_text__6IJDd"><b>Sales Inquiries</b> 
+                      <a class="contact_popup_link__IFKEk" href="tel:+91-33-2321-1380">+91-33-2321-1380</a>
+                      </p>
+                    </div>
+                  </div>
+                    
                   </Col>
                   <Col>
-                    <p className="contact_popup_text__6IJDd"><b>Customer Support</b> 
-                    <a class="contact_popup_link__IFKEk" href="mailto:beas@beas.co.in">beas@beas.co.in</a>
-                    </p>
+                    <div className='CustomerSupport'>
+                      <span><Mail /></span>
+                      <div>
+                        <p className="contact_popup_text__6IJDd"><b>Customer Support</b> 
+                        <a class="contact_popup_link__IFKEk" href="mailto:beas@beas.co.in">beas@beas.co.in</a>
+                        </p>
+                      </div>
+                    </div>
+                    
                   </Col>
                 </Row>
                 <iframe className='contactMap' src={`${contactus?.url}`} width="100%" height="400" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>

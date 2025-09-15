@@ -1,10 +1,8 @@
 import React from 'react'
 import { Container, Row, Col, Dropdown } from 'react-bootstrap'
-import { Phone, Smartphone, Mail, MapPin, PhoneCall, Printer } from 'react-feather'
+import { Smartphone, Mail, MapPin, PhoneCall, Printer } from 'react-feather'
 import Nav from 'react-bootstrap/Nav';
 import { useRouter } from 'next/router';
-import { env } from '../constants/common';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Link from 'next/link';
 // Recursive dropdown rendering
 const RecursiveDropdown = ({ items, baseSlug = '/service' }) => {
