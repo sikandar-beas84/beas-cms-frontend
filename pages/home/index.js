@@ -2,16 +2,16 @@ import React from 'react'
 import Link from 'next/link'
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from "react-bootstrap";
-import BannerSlider from "./component/BannerSlider";
-import BannerCarousal from "./component/BannerCarousal";
+import BannerSlider from "../component/BannerSlider";
+import BannerCarousal from "../component/BannerCarousal";
 import { ArrowUpRight } from "react-feather";
-import Globe from "./component/Globe";
+import Globe from "../component/Globe";
 import { useScroll, useTransform } from 'framer-motion';
 import Nav from 'react-bootstrap/Nav';
-import HomeService from "./services/Home";
-import { env } from './constants/common';
+import HomeService from "../services/Home";
+import { env } from '../constants/common';
 
-import SEO from '../components/SEO';
+import SEO from '../../components/SEO';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 

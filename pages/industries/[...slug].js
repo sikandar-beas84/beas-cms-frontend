@@ -14,8 +14,6 @@ import { postService } from "../configs/FetchRequest";
 
 const Page = ({industry, enrichedContents}) => {
 
-    console.log("industry=",industry);
-
     const router = useRouter();
     if (router.isFallback) {
       return <div>Loading...</div>;

@@ -2,38 +2,11 @@ import React from 'react'
 import { Container, Row, Col, Dropdown } from 'react-bootstrap'
 import { Smartphone, Mail, MapPin, PhoneCall, Printer } from 'react-feather'
 import Nav from 'react-bootstrap/Nav';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-// Recursive dropdown rendering
-const RecursiveDropdown = ({ items, baseSlug = '/service' }) => {
-  return items?.map((item, index) => {
-    const hasChildren = item.children && item.children.length > 0;
-    const itemSlug = `${baseSlug}/${item.slug}`;
-
-    if (hasChildren) {
-      return (
-        <Dropdown drop="end" key={index} className="dropdown-submenu">
-          <Dropdown.Toggle as="div" className="dropdown-item dropdown-toggle" style={{cursor:'pointer',padding:'5px'}}>
-            {item.name}
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            <RecursiveDropdown items={item.children} baseSlug={itemSlug} />
-          </Dropdown.Menu>
-        </Dropdown>
-      );
-    }
-
-    return (
-      <Dropdown.Item as={Link} href={itemSlug} key={index} style={{padding:'5px'}}>
-        {item.name}
-      </Dropdown.Item>
-      
-    );
-  });
-};
+import { env } from '../constants/common';
+import Image from 'next/image';
 
 const Footer = ({homeData}) => {
-  const router = useRouter();
+
   const casestudy = Array.isArray(homeData?.projects) ? homeData.projects?.[0] : [];
   return (
     <>
@@ -43,7 +16,6 @@ const Footer = ({homeData}) => {
 
             <Col xs={12} lg={3} className='mb-md-2 mb-lg-0'>
               <p>Services</p>
-              {/* <RecursiveDropdown items={homeData?.services?.children} /> */}
               <ul>
               { homeData?.services?.children?.map((item, index)=>(
                 <li style={{listStyleType:'none'}} key={index}>
@@ -96,16 +68,11 @@ const Footer = ({homeData}) => {
               <p>Our Certificate</p>
               <div className='mt-2 CertificatePic'>
                 {/* <iframe src={homeData?.contactus?.url} width="100%" height="200" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe> */}
-                
-                <div className='certificate-icon'>
-                  <img src="/assets/images/certificate2.png"></img>
+                { homeData?.certificates?.map((item, index)=>(
+                <div className='certificate-icon' key={index}>
+                  <Image width={450} height={380} src={`${env.BACKEND_BASE_URL}${item?.image}`} alt="image" loading="lazy" />
                 </div>
-                <div className='certificate-icon'>
-                  <img src="/assets/images/certificate3.png"></img>
-                </div>
-                <div className='certificate-icon'>
-                  <img src="/assets/images/certificate1.png"></img>
-                </div>
+                ))}
                 
               </div>
             </Col>

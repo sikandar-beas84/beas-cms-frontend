@@ -43,9 +43,6 @@ const ContactUs = ({contactus}) => {
       data.append(key, formData[key]);
     }
 
-    for (let [key, value] of data.entries()) {
-      console.log(`${key}:`, value);
-    }
     try {
       const res = await fetch(`${env.API_BASE_URL}save-customer-enquiry`, {
         method: 'POST',

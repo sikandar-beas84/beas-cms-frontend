@@ -28,7 +28,11 @@ const BannerSlider = ({bannerSlide}) => {
   };
   return (
     <Carousel>
-      { bannerSlide?.map((item,index)=>(
+      { bannerSlide?.map((item,index)=>{
+        const descriptionText = item?.description
+        ? item.description.split(" ").slice(0, 15).join(" ") + "..."
+        : "";
+        return(
        <Carousel.Item key={index}>
         <img src={`${env.BACKEND_BASE_URL}${item.image}`}
           alt='banner'
@@ -46,14 +50,18 @@ const BannerSlider = ({bannerSlide}) => {
                 <p>
                   {item.title}
                 </p>
-                <div className='fw-300' dangerouslySetInnerHTML={{ __html: item?.description }} />
+                <div className='fw-300' dangerouslySetInnerHTML={{ __html: descriptionText }} />
                 <p className="link-txt f-small">Learn More <ArrowUpRight/></p>
+                {/* <Link href={`/industries/${item.slug}`} style={{ cursor: "pointer", textDecoration:'none', }}>
+                <p className="link-txt f-small">Learn More <ArrowUpRight/></p>
+                </Link> */}
              </motion.div>
             </Col>
           </Row>
         </Carousel.Caption>
       </Carousel.Item>
-     )) }
+        );
+    }) }
     </Carousel>
   )
 }
