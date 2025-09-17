@@ -62,10 +62,19 @@ const ContactUs = ({contactus}) => {
         setErrors(result.error);
       }
     } catch (err) {
-      console.error(err);
-      setStatus('❌ Submission failed. Check console.');
+      //console.error(err);
+      setStatus('❌ Submission failed.');
     }
   };
+
+  const isFormValid = Object.values({
+    name: formData.name,
+    email: formData.email,
+    phone: formData.phone,
+    subject: formData.subject,
+    message: formData.message,
+    file: formData.file
+  }).every((value) => value && value !== '');
 
   return (
     <>
@@ -169,7 +178,7 @@ const ContactUs = ({contactus}) => {
                   </Col>
                   </Row>
                   <Col xs={12} lg={3}>
-                    <button type="submit" className='red-btn w-100 mt-3'>Submit</button>
+                    <button type="submit" className='red-btn w-100 mt-3' disabled={!isFormValid}>Submit</button>
                   </Col>
                   <Col xs={12} className='mt-3'>
                   {status && <p>{status}</p>}

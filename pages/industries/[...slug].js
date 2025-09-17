@@ -134,7 +134,7 @@ export async function getServerSideProps({ params }) {
             const data = await postService('get-casestudy-by-slug', `${env.ACCESS_TOKEN}`, item.extra_description);
             return { ...item, casestudy: data };
           } catch (err) {
-            console.error(`Failed to fetch for ${item.extra_description}:`, err);
+            //console.error(`Failed to fetch for ${item.extra_description}:`, err);
             return item; // fallback to original item
           }
         })

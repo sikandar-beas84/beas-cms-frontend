@@ -86,7 +86,7 @@ const Page = ({career, menucareer, contact, decodedId}) => {
         setErrors(result.error); // store errors in state
       }
     } catch (err) {
-      console.error(err);
+      //console.error(err);
       setStatus('❌ Submission failed. Check console.');
     }
   };

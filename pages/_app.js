@@ -26,7 +26,7 @@ class MyApp extends App {
     const homesection = await HomeService.homePage();
     homeData = homesection.data;
   } catch (error) {
-    console.error("Failed to load home data:", error.message);
+    //console.error("Failed to load home data:", error.message);
     homeData = null;
   }
     return {

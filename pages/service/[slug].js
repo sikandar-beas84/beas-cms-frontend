@@ -50,7 +50,7 @@ const Page = ({service, enrichedChildren }) => {
                                 {item1?.menu_contents?.contents?.map((content, index) =>
                                 content?.extra_description ? (
                                     <React.Fragment key={index}>
-                                        <Col xs={3}>
+                                        <Col xs={4}>
                                             <div className='gigs_box'>
                                                 <div className='story-box'>
                                                   <Image width={550} height={50} src={`${env.BACKEND_BASE_URL}${content.casestudy?.data?.casestudy?.image}`} alt='image' className='img-fluid' loading="lazy" />
@@ -130,7 +130,7 @@ export async function getServerSideProps({ params }) {
               );
               return { ...c, casestudy: data };
             } catch (err) {
-              console.error("❌ Error fetching casestudy:", err);
+              //console.error("❌ Error fetching casestudy:", err);
               return c;
             }
           })

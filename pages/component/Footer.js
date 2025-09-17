@@ -5,9 +5,40 @@ import Nav from 'react-bootstrap/Nav';
 import { env } from '../constants/common';
 import Image from 'next/image';
 
+import { FaLaptopCode, FaCloud, FaLock, FaCogs, FaLightbulb } from "react-icons/fa";
+import { MdOutlineDesignServices } from "react-icons/md";
+import { AiOutlineAppstore } from "react-icons/ai";
+import { SiAdobe } from "react-icons/si";
+
+import { FaHome, FaIndustry, FaServicestack, FaUserGraduate, FaBookOpen, FaEnvelope } from "react-icons/fa";
+import { MdInfo } from "react-icons/md";
+import { GiSkills } from "react-icons/gi";
+
 const Footer = ({homeData}) => {
 
   const casestudy = Array.isArray(homeData?.projects) ? homeData.projects?.[0] : [];
+  const serviceIcons = {
+    "application-development": <FaLaptopCode />,
+    "analytics-and-ai": <FaLightbulb />,
+    "application-maintenance": <FaCogs />,
+    "application-solutioning": <AiOutlineAppstore />,
+    "cloud-and-devops-services": <FaCloud />,
+    "cybersecurity-services": <FaLock />,
+    "digital-transformation": <MdOutlineDesignServices />,
+    "professional-services-final": <FaCogs />,
+    "ui-ux": <SiAdobe />,
+  };
+  const menuIcons = {
+    "home": <FaHome />,
+    "about": <MdInfo />,
+    "industries": <FaIndustry />,
+    "services": <FaServicestack />,
+    "skills": <GiSkills />,
+    "career": <FaUserGraduate />,
+    "casestudy": <FaBookOpen />,
+    "contact": <FaEnvelope />,
+  };
+
   return (
     <>
       <footer>
@@ -19,6 +50,9 @@ const Footer = ({homeData}) => {
               <ul>
               { homeData?.services?.children?.map((item, index)=>(
                 <li style={{listStyleType:'none'}} key={index}>
+                  <span className='footer-icon'>
+                    {serviceIcons[item.slug] || <FaLaptopCode />} {/* fallback icon */}
+                  </span>
                 <Nav.Link href={`/service/${item.slug}`}  style={{ color: 'white !important' }}>{item.name}</Nav.Link>
                 </li>
               ))}
@@ -32,6 +66,9 @@ const Footer = ({homeData}) => {
                 if (item.slug === 'casestudy') {
                   return (
                     <li style={{listStyleType:'none'}}key={index}>
+                      <span className='footer-icon'>
+                        {menuIcons['casestudy'] || <FaHome />}
+                      </span>
                     <Nav.Link href={`/${item.slug}/${casestudy.slug}`} style={{ color: 'white !important' }}>{item.name}</Nav.Link>
                     </li>
                      );
@@ -39,6 +76,9 @@ const Footer = ({homeData}) => {
                   return (
                     //item.slug !== "service" && item.slug !== "industries" && (
                       <li style={{ listStyleType: 'none' }} key={index}>
+                        <span className='footer-icon'>
+                          {menuIcons[item.slug] || <FaHome />}
+                        </span>
                         <Nav.Link href={`/${item.slug}`} style={{ color: 'white' }}>
                           {item.name}
                         </Nav.Link>

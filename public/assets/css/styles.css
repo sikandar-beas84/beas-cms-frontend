@@ -2569,4 +2569,13 @@ font-style: normal;
     width: 100%;
     height: 330px;
 }
+
+.footer-icon{
+  margin-right: 8px;
+  color: white;
+  font-size: 15px;
+}
+footer ul li {
+  display: flex;
+}
 /* end 15-09-25 */
