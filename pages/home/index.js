@@ -47,21 +47,30 @@ function Home({homeData}) {
 
           <Container fluid className="mtt-100">
             <Row>
-              <Col className="px-0">
+              <Col className="px-0 beas_banner">
                 <BannerSlider bannerSlide={homeData?.banners} />
               </Col>
             </Row>
           </Container>
           <Container fluid>
+            {/* <div className='beas_W1200'>
+              <ul className='clientele__list pt-5 py-4'>
+                { homeData?.services?.children?.map((item, index)=>(
+                  <li key={index}>
+                    <span>{item.name}<span className="star">* </span></span>
+                  </li>
+                  )) }
+              </ul>
+            </div> */}
             <Row>
               <Col className="px-0">
                 <div className="working-area">
                   <div className="scroll-animation ">
                     <div className="scroll-slide-track">
                       <ul>
-                        { homeData?.services?.children?.map((item, index)=>(
+                        { homeData?.clients?.map((item, index)=>(
                         <li key={index}>
-                          <span>{item.name}<span className="star">* </span></span>
+                          <Image width={600} height={100} src={`${env.BACKEND_BASE_URL}${item?.logo}`} alt="image" loading="lazy" />
                         </li>
                         )) }
                       </ul>
@@ -70,192 +79,126 @@ function Home({homeData}) {
                 </div>
               </Col>
             </Row>
+
+            <div className='beas_W1200'>
+              <div className='bg_0081d2 AboutUs'>
+                <Row>
+                  <Col lg={12}>
+                    <div className='aboutTxt text-left'>
+                      <h1>{homeData?.aboutus?.name}</h1>
+                      <div className="gry-txt">
+                      {aboutuspreviewText}
+                      </div>
+                      <div className='Learn_More_Link'>
+                        <Link href="/about">
+                        <p className='beas_text_link'>
+                          Learn More <ArrowUpRight />
+                        </p>
+                      </Link>
+                      </div>
+                    </div>
+                  </Col>
+                  <Col lg={12}>
+                    <div className='WHOWEARE'>
+                      <ul>
+                      <li><span>300+</span><span className="ttxt"> Clients</span><p class="stat-label">Trusted partners across industries</p></li>
+                      <li><span>2k+</span><span className="ttxt"> Projects</span><p class="stat-label">Delivered on-time, on-budget</p></li>
+                      <li><span>200+</span> <span className="ttxt">Experts</span><p class="stat-label">Cross-functional experienced team</p></li>
+                      <li><span>20+</span> <span className="ttxt">Years Experience</span><p class="stat-label">Proven expertise & consistent growth</p></li>
+                    </ul>
+                    </div>
+                  </Col>
+                </Row>
+              </div>
+            </div>
+
+            
+            
+            
           </Container>
         </section>
-        <section className="pad-top-50 section-bg">
-          <Container>
+
+        <section className='section_e6f6ff mt-5 py-5'>
+          <div className='beas_W1200'>
+            <h2 class="beas_h2 mb-0">Our Services</h2>
             <Row>
-              <Col xs={12} lg={6}>
-                <div className="aboutImg">
-                  <Image width={450} height={380} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${homeData?.aboutus?.menu_contents.image}`} alt="image" loading="lazy" />
-                  <Image width={250} height={180} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${homeData?.aboutus?.menu_contents.icon}`} alt="image" loading="lazy" />
-                  <div className="experience-year">
-                    <div className="experience-year__icon">
-                      <Image width={600} height={100} src="/assets/images/trophy.png" alt="image" loading="lazy" />
-                    </div>
-                    <div className="experience-year__content">
-                      <h6 className="circle rotateText">
-                        <span style={{ transform: 'rotate(0deg)' }}>Y</span>
-                        <span style={{ transform: 'rotate(17deg)' }}>e</span>
-                        <span style={{ transform: 'rotate(34deg)' }}>a</span>
-                        <span style={{ transform: 'rotate(51deg)' }}>r</span>
-                        <span style={{ transform: 'rotate(68deg)' }}>s</span>
-                        <span style={{ transform: 'rotate(85deg)' }}>O</span>
-                        <span style={{ transform: 'rotate(102deg)' }}>f</span>
-                        <span style={{ transform: 'rotate(119deg)' }}>-</span>
-                        <span style={{ transform: 'rotate(136deg)' }}>E</span>
-                        <span style={{ transform: 'rotate(153deg)' }}>x</span>
-                        <span style={{ transform: 'rotate(170deg)' }}>p</span>
-                        <span style={{ transform: 'rotate(187deg)' }}>e</span>
-                        <span style={{ transform: 'rotate(204deg)' }}>r</span>
-                        <span style={{ transform: 'rotate(221deg)' }}>i</span>
-                        <span style={{ transform: 'rotate(238deg)' }}>e</span>
-                        <span style={{ transform: 'rotate(255deg)' }}>n</span>
-                        <span style={{ transform: 'rotate(272deg)' }}>c</span>
-                        <span style={{ transform: 'rotate(289deg)' }}>e</span>
-                        <span style={{ transform: 'rotate(306deg)' }}>2</span>
-                        <span style={{ transform: 'rotate(323deg)' }}>0</span>
-                        <span style={{ transform: 'rotate(340deg)' }}>-</span>
-                      </h6>
-                    </div>
-                  </div>
-                </div>
-              </Col>
-              <Col xs={12} lg={6}>
-                <div className="aboutTxt">
-                
-                  <p className="sub-title">{homeData?.aboutus?.name}</p>
-                  <h1>{homeData?.aboutus?.menu_contents.title}</h1>
-                  <div className="gry-txt">
-                  {aboutuspreviewText}
-                  </div>
-                  <Link href="/about">
-                    <p style={{ cursor: "pointer" }}>
-                      Learn More <ArrowUpRight />
-                    </p>
-                  </Link>
-                  <ul>
-                    <li><span>300+</span><span className="ttxt"> Clients</span></li>
-                    <li><span>2k+</span><span className="ttxt"> Projects</span></li>
-                    <li><span>200+</span> <span className="ttxt">Experts</span></li>
-                  </ul>
-
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </section>
-        <section className="service-bg blue-bg-curve mt-5">
-          <Container>
-            <Row className="justify-content-start">
-              <Col xs={12}>
-                <div className='heading-block HeadingOurServices'>Our Services</div>
-              {/* <div style={{color:'white'}} dangerouslySetInnerHTML={{ __html: homeData?.services?.description }} /> */}
-              </Col>
-            </Row>
-
-            <Row className="mt-3 service-box">
-            { homeData?.services?.children?.map((item, index)=>{
+              { homeData?.services?.children?.map((item, index)=>{
               const descriptionText = item?.description
               ? item.description.split(" ").slice(0, 10).join(" ") + "..."
               : "";
               return (
                 <Col lg={4} key={index}>
                   <Nav.Link href={`/service/${item.slug}`}  style={{ cursor: "pointer", color: 'white !important' }}>
-                    <div className="service-wrap d-flex flex-column" >
-                      <div className="service-wrap__header srvc-box sevc-2">
+                    <div className="wedeliver_block" >
+                      <div className="we_icon">
                         <Image 
                         width={600} 
                         height={100} 
                         src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.icon}`} 
-                        className="img-fluid srvc-icon" 
+                        className="img-fluid" 
                         alt="image" 
                         loading="lazy"
-                        style={{
-                          filter: 'opacity(0.8) drop-shadow(0 0 0 white) brightness(7.5)',
-                        }}
                         />
-                        
-                        <div className='srvc-bxtx'>
+                      </div>
+                      <div className='wedeliver_item'>
                           <h3>{item.name}</h3>
-                          <p className="service-wrap__txt">
+                          <p className="p-0 m-0">
                         {descriptionText}
                       </p>
-                      <span className='ArrowUpRight'><ArrowUpRight /></span>
-                        </div>
+                        </div>                      
+                      <span className=''><ArrowUpRight /></span>
+                      <div className='Learn_More_Link'>
+                        <p className='beas_text_link m-0'>
+                          Learn More <ArrowUpRight />
+                        </p>
                       </div>
-                      
-                      
                     </div>
                   </Nav.Link>
                 </Col>
               );
             })}
-            </Row>        
-          </Container>
-        </section>
-        <section className="pad-top-50">
-          <Container className="position-relative">
-            
+            </Row>
+            <h2 class="beas_h2 pt-5 mb-0">Industries we Serve</h2>
             <Row>
-              <Col>
-                <div className="">
-                  <p className="title-block">Industries we Serve</p>
-                  {/* <BannerCarousal page="industry" /> */}
-                  <Row>
-                    <Col xs={12}>
-                      <ul className="service-block">
-                      { homeData?.industries?.children?.map((item, index)=>(
-                        <li key={index}>
-                          <Link href={`/industries/${item.slug}`} style={{ cursor: "pointer", textDecoration:'none', }}>
-                          <div className="industy-block __list" style={{borderRadius:'10px'}}>
-                            <div className="industy-block __top">
-                              <div className='iimage-wrapper'>
-                              <Image width={600} height={100} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.icon}`} alt="image" className="img-fluid" loading="lazy" />
-                              </div>
-                            </div>
-                            <div className="industy-block __bottom">
-                            <p>{item.name}</p>
-                              <div className='icon-wrapper'>
-                              <svg xmlns="http://www.w3.org/2000/svg" 
-                                width="24" height="24" 
-                                viewBox="0 0 24 24" 
-                                fill="none" 
-                                stroke="currentColor" 
-                                stroke-width="2" 
-                                stroke-linecap="round" 
-                                stroke-linejoin="round">
-                              <line x1="7" y1="17" x2="17" y2="7"></line>
-                              <polyline points="7 7 17 7 17 17"></polyline>
-                            </svg>
-                              </div>      
-                            </div>
-                          </div>
-                          </Link>
-                        </li>
-                      ))}                
-                      </ul>
-                    </Col>
-                  </Row>
+            { homeData?.industries?.children?.map((item, index)=>(
+              <Col lg={4} key={index}>
+                <div className='industries_imgs'>
+                  <a href='#'>
+                  <Image width={600} height={100} src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.image}`} alt="image" loading="lazy" />
+                    <span class="text__csogW">{item.name}</span>
+                    <div class="overlay__L3Hen"></div>
+                  </a>
                 </div>
               </Col>
+              ))}
             </Row>
-            <Row className="my-3">
-              <Col xs={12}>
-                <p className="title--block">Technologies</p>
-              </Col>
-              <Col xs={12}>
-
-                <div className="industy-block">
-                  <Container>
-                    <Row>
-                      <Col>
-                        <BannerCarousal page="tools" technologiya={homeData?.technologies}/>
-                      </Col>
-
-                    </Row>
-                  </Container>
-                </div>
-              </Col>
-            </Row>
-          </Container>
+          </div>
         </section>
+        
+        <div className='container-fluid'>
+          <div className='beas_W1200'>
+            <div class="text-center pt-5"><h2 class="beas_h2 mb-4">Our Technology Expertise</h2></div>
+            <Row>
+            { homeData?.technologies?.map((item, index)=>(
+              <Col lg={2} key={index}>
+                <div class="tech-list-bx">
+                <Image width={600} height={100} src={`${env.BACKEND_BASE_URL}assets/img/technology/${item.logo}`} alt="image" loading="lazy" />
+                  <h5>{item.name}</h5>
+                </div>
+              </Col>
+            ))}
+            </Row>
+          </div>
+        </div>
+        
+        
         <section className="tool-bg mt-5">
           <Container>
-            <Row className="justify-content-end">
+            <div className='beas_W1200'>
+              <Row className="">
 
-              <Col xs={12} lg={5}>
-                <div className="logo-block2">
+              <Col>
+                <div className="beas_Why">
                 {homeData?.whychooseus?.map((item, index) =>
                   item.slug === "why-choose-us-content" && (
                     <React.Fragment key={index}>
@@ -264,93 +207,64 @@ function Home({homeData}) {
                     </React.Fragment>
                   )
                 )}
-                <ul className="logo-block2-list">
-                  {homeData?.whychooseus?.map((item, index) => {
-                    if (item.slug === "why-choose-us-sub-content") {
-                      return (
-                          <li key={index}>
-                            <div dangerouslySetInnerHTML={{ __html: item?.description }} />
-                            </li>
-                      );
-                    }
-                    return null;
-                  })}
-                  </ul>
-                  {/* <div className="partner-block">
-                    <p className="partner-block__txt">Our Partners</p>
-                    <div className="partner-block__imgBlock">
-                      <ul>
-                      { homeData?.partners?.map((item, index)=>(
-                        <li key={index}><Image width={600} height={100} src={`${env.BACKEND_BASE_URL}${item.logo}`} className="img-fluid" alt="partner-logo" /></li>
-                      ))}
-                        </ul>
+                <Row>
+                {homeData?.whychooseus?.map((item, index) => {
+                  if (item.slug === "why-choose-us-sub-content") {
+                  return (
+                  <Col lg={4}>
+                    <div class="why_block__GpObg">
+                      <div class="why_icon_num">
+                      <Image width={600} height={100} style={{ minWidth: "42px" }}  src={`${env.BACKEND_BASE_URL}${item.image}`} alt="image" loading="lazy" />
+                        
+                      <span>{index + 1}</span>
+                      </div>
+                        <p class="mb-0 mt-3">{item.description}</p>
                     </div>
-                  </div> */}
+                  </Col>
+                  );
+                  }
+                  return null;
+                })}
+                </Row>
+                  
                 </div>
               </Col>
             </Row>
+            </div>
+            
           </Container>
         </section>
-        <section className="pad-top-50 section-bg">
-          <div className="service-bg-shape">
-            <Image width={600} height={100} src="/assets/images/logo-shape.png" alt="image" className="img-fluid" loading="lazy"/>
-            <Image width={600} height={100} src="/assets/images/logo-shape.png" alt="image" className="img-fluid" loading="lazy" />
-          </div>
-          <Container>
-            <Row className="project-wrap mb-4">
-              <Col xs={12} lg={9}>
-                <div className="title-block">
-                  Project Experience
-                </div>
-              </Col>
 
-              {/* <Col xs={12} lg={3}><p className="link-txt tt-right">View All <ArrowUpRight /></p></Col> */}
-            </Row>
-            <Row>
+        <section>
+          <Container>
+            <div className='beas_W1200'>
+              <div class="text-center pt-5"><h2 class="beas_h2 mb-4">What Our Clients Say</h2></div>
+              <div className='w-50 m-auto'>
+                <BannerCarousal page="testimonial" testimonials={homeData?.testimonials} />
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        <section class="section_e6f6ff mt-5 py-5">
+          <Container>
+            <div className='beas_W1200'>
+              <div class="text-center pt-0"><h2 class="beas_h2 mb-4">Project Experience</h2></div>
+              <div className='bg-white ProjectExperience'>
+                <div className='Industries_how-it-works__lcCAN '>
+                <Row>
               <BannerCarousal page="projects" projects={homeData?.projects} />
             </Row>
-          </Container>
-
-        </section>
-        <section className="pad-top-50">
-          <Container>
-            <Row>
-              <Col xs={12} xl={6}>            
-                <div className="globe-wrap">
-                  <Globe width={600} height={600} />
-                </div>
-              </Col>
-              <Col xs={12} xl={6}>
-                <div className="aboutTxt blue-bg">
-                  <p className="sub-title mb-1">Client Feedback</p>
-                  <p className="mb-2">What Our Clients Say</p>
-                  <BannerCarousal page="testimonial" testimonials={homeData?.testimonials} />
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </section>
-        <section className="mt-5">
-          <Container>
-            <Row>
-              <Col xs={12} lg={12}>
-                <p className="titleBlock">Esteemed Clientele</p>
-              </Col>
-              <Col xs={12} lg={12}>
-
-                <div className="industy-block">
-                  <Container>
-                    <Row>
-                      <Col>
-                        <BannerCarousal page="clients" clients={homeData?.clients} /></Col>
-                    </Row>
-                  </Container>
-
 
                 </div>
-              </Col>
-            </Row>
+              </div>
+            </div>
           </Container>
+          {/* <div class="text-center my-5 mb-0">
+            <a class="btn Home_btn_border__TjT33 ms-0" href="#">
+              See Case Studies <ArrowUpRight />
+            </a>
+          </div> */}
         </section>
       </main>
     </>
