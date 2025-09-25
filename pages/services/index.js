@@ -5,7 +5,7 @@ import { ArrowUpRight } from "react-feather";
 import BreadCrumb from '../component/BreadCrumb';
 import Nav from 'react-bootstrap/Nav';
 import Image from 'next/image';
-import HomeService from '../services/Home';
+import HomeService from '../service/Home';
 import { env } from '../constants/common';
 import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';

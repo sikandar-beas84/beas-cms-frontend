@@ -6,7 +6,7 @@ import { Col, Row } from "react-bootstrap";
 import { ArrowUpRight } from 'react-feather';
 import Link from 'next/link'
 import Image from 'next/image';
-import HomeService from '../services/Home';
+import HomeService from '../service/Home';
 import { env } from '../constants/common';
 import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';

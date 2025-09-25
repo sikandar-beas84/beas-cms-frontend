@@ -10,6 +10,7 @@ import { Phone } from 'react-feather';
 import { PhoneCall } from 'react-feather';
 import { useRouter } from 'next/router';
 import { env } from '../constants/common';
+import Image from 'next/image';
 
 const Header = ({homeData}) => {
   const router = useRouter();
@@ -22,7 +23,17 @@ const Header = ({homeData}) => {
               <Col>
                 <Navbar collapseOnSelect expand="lg">
 
-                  <Navbar.Brand href={env.SITE_URL}><img src={`${env.BACKEND_BASE_URL}${homeData?.logo?.image}`} alt="logo" className='img-fluid'/></Navbar.Brand>
+                  <Navbar.Brand href={env.SITE_URL}>
+                  <Image
+                    src={`${env.BACKEND_BASE_URL}${homeData?.logo?.image}`}   // use optimized format (webp/avif)
+                    alt="Hero Banner"
+                    width={300}
+                    height={50}
+                    priority      // ✅ ensures this image is not lazy-loaded
+                    fetchPriority="high" // ✅ tells browser it’s critical
+                    className="img-fluid" // you can keep bootstrap class
+                  />
+                    </Navbar.Brand>
                   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                   <Navbar.Collapse id="responsive-navbar-nav">
                   <Nav className="mx-auto">
@@ -47,7 +58,7 @@ const Header = ({homeData}) => {
                           return (
                             <NavDropdown title="Services" id="services-dropdown" key={index}>
                               {homeData?.services?.children?.map((child, i) => (
-                                <NavDropdown.Item href={`/service/${child.slug}`} key={i}>
+                                <NavDropdown.Item href={`/services/${child.slug}`} key={i}>
                                   {child.name}
                                 </NavDropdown.Item>
                               ))}

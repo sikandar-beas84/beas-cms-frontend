@@ -6,6 +6,7 @@ import { Col, Row } from "react-bootstrap";
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'react-feather';
 import { env } from '../constants/common';
+import Image from 'next/image';
 
 const BannerSlider = ({bannerSlide}) => {
   // State to track the active slide
@@ -34,9 +35,16 @@ const BannerSlider = ({bannerSlide}) => {
         : "";
         return(
        <Carousel.Item key={index}>
-        <img src={`${env.BACKEND_BASE_URL}${item.image}`}
-          alt='banner'
-          className='img-fluid' />
+        <Image
+              src={`${env.BACKEND_BASE_URL}${item.image}`}   // use optimized format (webp/avif)
+              alt="Hero Banner"
+              width={1920}
+              height={1080}
+              priority      // ✅ ensures this image is not lazy-loaded
+              fetchPriority="high" // ✅ tells browser it’s critical
+              className="img-fluid" // you can keep bootstrap class
+            />
+       
           <Carousel.Caption>
           <Row>
             <Col xs={12} xl={8} className="position-relative">
@@ -51,7 +59,7 @@ const BannerSlider = ({bannerSlide}) => {
                   {item.title}
                 </p>
                 <div className='fw-300' dangerouslySetInnerHTML={{ __html: descriptionText }} />
-                <p className="link-txt f-small">Learn More <ArrowUpRight/></p>
+                <p><a className="link-txt f-small" href={`/industries/${item.slug}`}>Learn More <ArrowUpRight/></a></p>
                 {/* <Link href={`/industries/${item.slug}`} style={{ cursor: "pointer", textDecoration:'none', }}>
                 <p className="link-txt f-small">Learn More <ArrowUpRight/></p>
                 </Link> */}

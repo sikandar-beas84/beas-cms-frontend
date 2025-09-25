@@ -2,12 +2,12 @@ import React from 'react'
 import BreadCrumb from '../component/BreadCrumb'
 import { Container, Row, Col } from 'react-bootstrap'
 import Image from 'next/image';
-import HomeService from '../services/Home';
+import HomeService from '../service/Home';
 import { env } from '../constants/common';
 import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';
 
-const AboutUs = ({aboutus, experts}) => {
+const AboutUs = ({aboutus, commonaboutus}) => {
     const router = useRouter();
     if (router.isFallback) {
       return <div>Loading...</div>;
@@ -70,39 +70,28 @@ const AboutUs = ({aboutus, experts}) => {
                                 <div className='counterpanel'>
                                     <div className='counterInrPanel'>
                                         <Row>
-                                            <Col>
+                                            { commonaboutus?.map((item, index)=>{
+                                            if (item.title !== "Years Experience") {
+                                            return(<Col key={index}>
                                                 <div class="counter_bx">
                                                     <em>
-                                                        <img src="/assets/images/SatisfiedClients.png"></img>
+                                                    <Image 
+                                                    width={600} 
+                                                    height={100} 
+                                                    src={`${env.BACKEND_BASE_URL}${item?.icon}`} 
+                                                    className="img-fluid" 
+                                                    alt="image" 
+                                                    loading="lazy"
+                                                    />
                                                     </em>
                                                     <div class="st_texts">
-                                                        <p><span class="counter-value" data-count="100">300+</span></p>
-                                                        <b>Satisfied Clients Across the Globe</b>
+                                                        <p><span class="counter-value" data-count="100">{item?.short_desc}</span></p>
+                                                        <b>{item?.long_desc}</b>
                                                     </div>
                                                 </div>
-                                            </Col>
-                                            <Col>
-                                                <div class="counter_bx">
-                                                    <em>
-                                                        <img src="/assets/images/ProjectsDeliveredSuccessfully.png"></img>
-                                                    </em>
-                                                    <div class="st_texts">
-                                                        <p><span class="counter-value" data-count="100">2k+</span></p>
-                                                        <b>Projects Delivered Successfully</b>
-                                                    </div>
-                                                </div>
-                                            </Col>
-                                            <Col>
-                                                <div class="counter_bx">
-                                                    <em>
-                                                        <img src="/assets/images/ExpertsUndertheSameRoof.png"></img>
-                                                    </em>
-                                                    <div class="st_texts">
-                                                        <p><span class="counter-value" data-count="100">200+</span></p>
-                                                        <b>Experts Under the Same Roof</b>
-                                                    </div>
-                                                </div>
-                                            </Col>
+                                            </Col>);
+                                            }
+                                            })}
                                         </Row>
                                     </div>
                                 </div>
@@ -122,7 +111,7 @@ const AboutUs = ({aboutus, experts}) => {
                                 <div className='title' dangerouslySetInnerHTML={{ __html: aboutus?.menu_contents?.description }} />
                             </Col> */}
                             <Col xs={12}>
-                                <div className='white-card-container'>
+                                <div className='white-card-container pb-5'>
                                     { aboutus?.menu_contents?.contents.map((item,index)=>(
                                     <div className='white-card mis_cont' key={index}>
                                         <div className='media_img'>
@@ -181,11 +170,15 @@ export async function getServerSideProps() {
 
     const res1 = await HomeService.expertPage();
     const experts = res1.data?.careers || [];
+
+    const res2 = await HomeService.commonaboutusPage();
+    const commonaboutus = res2.data?.commonaboutus || [];
   
     return {
       props: {
         aboutus,
-        experts
+        experts,
+        commonaboutus
       }
     }
   }

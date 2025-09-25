@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap'
 import { Col, Row } from "react-bootstrap";
 import BreadCrumb from '../component/BreadCrumb';
 import { Mail, PhoneCall } from 'react-feather'
-import HomeService from '../services/Home';
+import HomeService from '../service/Home';
 import { env } from '../constants/common';
 import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';

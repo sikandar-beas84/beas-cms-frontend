@@ -6,7 +6,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import { ArrowRight, ArrowUp, ArrowUpRight } from 'react-feather';
 import Carousel from 'react-bootstrap/Carousel';
 import Nav from 'react-bootstrap/Nav';
-import HomeService from '../services/Home';
+import HomeService from '../service/Home';
 import { env } from '../constants/common';
 import ReCAPTCHA from 'react-google-recaptcha';
 import SEO from '../../components/SEO';

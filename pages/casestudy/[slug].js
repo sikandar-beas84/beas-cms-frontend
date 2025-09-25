@@ -3,7 +3,7 @@ import BreadCrumb from "../component/BreadCrumb";
 import { Container, Row, Col } from "react-bootstrap";
 import Accordion from "react-bootstrap/Accordion";
 import Image from "next/image";
-import HomeService from "../services/Home";
+import HomeService from "../service/Home";
 import { env } from "../constants/common";
 import Link from "next/link";
 import SEO from "../../components/SEO";

@@ -47,7 +47,7 @@ const Footer = ({homeData}) => {
 
             <Col xs={12} lg={3} className='mb-md-2 mb-lg-0'>
               <p>Services</p>
-              <ul>
+              <ul className='service-explore'>
               { homeData?.services?.children?.map((item, index)=>(
                 <li style={{listStyleType:'none'}} key={index}>
                   <span className='footer-icon'>
@@ -60,7 +60,7 @@ const Footer = ({homeData}) => {
             </Col>
             <Col xs={12} lg={2}>
               <p>Explore</p>
-              <ul>
+              <ul className='service-explore'>
               
               { homeData?.menus?.map((item, index)=>{
                 if (item.slug === 'casestudy') {

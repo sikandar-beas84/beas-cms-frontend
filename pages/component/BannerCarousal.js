@@ -4,6 +4,7 @@ import { Col, Row } from "react-bootstrap";
 import { ArrowUpRight } from "react-feather";
 import { useRouter } from 'next/router';
 import { env } from '../constants/common';
+import Image from 'next/image';
 
 const BannerCarousal = ({ page, technologiya, clients, projects, testimonials }) => {
 
@@ -32,7 +33,7 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials })
   });
 
   // Default settings
-  const settings = createSliderSettings(4);
+  const settings = createSliderSettings(3);
   // Work Area settings
   const workareasettings = createSliderSettings(2);
 
@@ -85,11 +86,24 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials })
 
       {page == 'projects' && (
         <Slider {...settings}>
-          { projects?.map((item, index)=>(
-          <Col xs={12} lg={4} key={index}>
+          { projects?.map((item, index)=>{
+
+            const titleText = item?.title
+            ? item.title.split(" ").slice(0, 4).join(" ") + "..."
+            : "";
+          return(<Col xs={12} lg={4} key={index}>
             <div className="portfolio-work-wrap">
               <div className="portfolio-work-wrap__img">
-                <img src={`${env.BACKEND_BASE_URL}${item.image}`} alt="image" className="img-fluid" />
+              <Image
+              src={`${env.BACKEND_BASE_URL}${item.image}`}   // use optimized format (webp/avif)
+              alt="Hero Banner"
+              width={1920}
+              height={1080}
+              priority      // ✅ ensures this image is not lazy-loaded
+              fetchPriority="high" // ✅ tells browser it’s critical
+              className="img-fluid" // you can keep bootstrap class
+            />
+              
               </div>
               <div
                   className="portfolio-work-wrap__block"
@@ -97,15 +111,15 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials })
                   style={{ cursor: 'pointer' }} // Optional: makes it feel clickable
                 >
                 <div className="portfolio-work-wrap__txt">
-                  <p>{item.title}</p>
+                  <p>{titleText}</p>
                 </div>
                 <p className="link-txt"><ArrowUpRight /></p>
               </div>
 
             </div>
 
-          </Col>
-          ))}
+          </Col>);
+        })}
           
         </Slider>
       )}
@@ -122,8 +136,16 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials })
                 </p>
               </div>
               <div className="media">
-                <img src={`${env.BACKEND_BASE_URL}assets/img/testimonial/${item.profile_photo_path}`} className="mr-3" alt="image" />
-                <div className="media-body">
+              <Image
+              src={`${env.BACKEND_BASE_URL}assets/img/testimonial/${item.profile_photo_path}`}   // use optimized format (webp/avif)
+              alt="Hero Banner"
+              width={1920}
+              height={1080}
+              priority      // ✅ ensures this image is not lazy-loaded
+              fetchPriority="high" // ✅ tells browser it’s critical
+              className="img-fluid" // you can keep bootstrap class
+            />
+               <div className="media-body">
                   <div className="overview">
                     <div className="overview-box">
                       <div className="name"><b>{item.name}</b></div>
@@ -131,7 +153,16 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials })
                       {/* <div className="details">{item.role}</div> */}
                     </div>
                     <div className="overview-box-quote">
-                      <img src="/assets/images/quote.png" alt="image" className="img-fluid" />
+                    <Image
+                      src="/assets/images/quote.png"   // use optimized format (webp/avif)
+                      alt="Hero Banner"
+                      width={1920}
+                      height={1080}
+                      priority      // ✅ ensures this image is not lazy-loaded
+                      fetchPriority="high" // ✅ tells browser it’s critical
+                      className="img-fluid" // you can keep bootstrap class
+                    />
+                      
                     </div>
                   </div>
                 </div>
@@ -144,16 +175,30 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials })
       )}
       {page == 'tools' && (
         <Slider {...toolssettings}>
-          {/* <div className='tools'>
-           <div className='tools-image'> <img src="/assets/images/software-logo-img.webp" alt="logo-image" /></div>
-           <div className='tools-image'> <img src="/assets/images/software-logo-img.webp" alt="logo-image" /></div>
-           <div className='tools-image'> <img src="/assets/images/software-logo-img.webp" alt="logo-image" /></div>
-           <div className='tools-image'> <img src="/assets/images/software-logo-img.webp" alt="logo-image" /></div>
-           <div className='tools-image'> <img src="/assets/images/software-logo-img.webp" alt="logo-image" /></div>
-         </div> */}
+          
          { technologiya?.map((item, index)=>(
           <div className='tools' key={index}>
-            <div className='tools-image'> <img src={`${env.BACKEND_BASE_URL}assets/img/technology/${item.logo}`} alt="logo-image" /></div>
+            <div className='tools-image'>
+            <Image
+                src={`${env.BACKEND_BASE_URL}assets/img/technology/${item.logo}`}   // use optimized format (webp/avif)
+                alt="Hero Banner"
+                width={1920}
+                height={1080}
+                priority      // ✅ ensures this image is not lazy-loaded
+                fetchPriority="high" // ✅ tells browser it’s critical
+                className="img-fluid" // you can keep bootstrap class
+              />
+              <Image
+              src={`${env.BACKEND_BASE_URL}assets/img/technology/${item.logo}`}   // use optimized format (webp/avif)
+              alt="Hero Banner"
+              width={1920}
+              height={1080}
+              priority      // ✅ ensures this image is not lazy-loaded
+              fetchPriority="high" // ✅ tells browser it’s critical
+              className="img-fluid" // you can keep bootstrap class
+            />
+            
+            </div>
           </div>
          ))}
 
@@ -164,7 +209,16 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials })
 
           { clients?.map((item, index)=>(
           <div className='client-logo' key={index}>
-            <img src={`${env.BACKEND_BASE_URL}${item.logo}`} className="img-fluid" alt="client-logo" />
+            <Image
+              src={`${env.BACKEND_BASE_URL}${item.logo}`}   // use optimized format (webp/avif)
+              alt="Hero Banner"
+              width={1920}
+              height={1080}
+              priority      // ✅ ensures this image is not lazy-loaded
+              fetchPriority="high" // ✅ tells browser it’s critical
+              className="img-fluid" // you can keep bootstrap class
+            />
+            
           </div>
           ))}
 

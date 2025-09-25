@@ -9,7 +9,7 @@ import '../public/assets/css/styles.css';
 import "@flaticon/flaticon-uicons/css/all/all.css";
 import Header from './component/Header';
 import Footer from './component/Footer';
-import HomeService from "./services/Home";
+import HomeService from "./service/Home";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
