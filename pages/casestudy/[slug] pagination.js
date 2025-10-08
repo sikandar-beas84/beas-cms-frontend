@@ -3,7 +3,6 @@ import BreadCrumb from "../component/BreadCrumb";
 import { Container, Row, Col } from "react-bootstrap";
 import Accordion from "react-bootstrap/Accordion";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "react-feather";
 import HomeService from "../service/Home";
 import { env } from "../constants/common";
 import Link from "next/link";
@@ -139,8 +138,9 @@ const Page = ({ casestudy, menucasestudy, projects, currentSlug }) => {
               </Accordion>
             </Col>
           </Row>
-        
-        {/* ✅ Simple Previous / Next */}
+        </Container>
+
+        {/* ✅ Pagination (10 numbers at a time) */}
         <div className="d-flex justify-content-center my-4">
           {/* Previous */}
           {prevProject && (
@@ -148,22 +148,35 @@ const Page = ({ casestudy, menucasestudy, projects, currentSlug }) => {
               href={`/casestudy/${prevProject.slug}`}
               className="btn btn-outline-primary mx-1"
             >
-              <ChevronLeft/>
+              ← Previous
             </Link>
           )}
 
-          {/* Next */}
-          {nextProject && (
+          {/* Numbered Slugs */}
+          {projects.slice(start, end).map((proj, index) => (
             <Link
-              href={`/casestudy/${nextProject.slug}`}
+              key={proj.slug}
+              href={`/casestudy/${proj.slug}`}
+              className={`btn mx-1 ${
+                proj.slug === currentSlug
+                  ? "btn-primary"
+                  : "btn-outline-primary"
+              }`}
+            >
+              {start + index + 1}
+            </Link>
+          ))}
+
+          {/* Next Group */}
+          {end < totalPages && (
+            <Link
+              href={`/casestudy/${projects[end].slug}`}
               className="btn btn-outline-primary mx-1"
             >
-               <ChevronRight/>
+              Next →
             </Link>
           )}
         </div>
-        </Container>
-
       </main>
     </>
   );

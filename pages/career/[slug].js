@@ -14,6 +14,7 @@ import { useRouter } from 'next/router';
 import { Buffer } from "buffer";
 const Page = ({career, menucareer, contact, decodedId}) => {
 
+  console.log("career",career);
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -129,8 +130,9 @@ const Page = ({career, menucareer, contact, decodedId}) => {
                   <span className="bold-title">Job Type:</span><p> Full Time</p>
                 </div>
                 <div className='JobDetails_job_info__fvW3O all_contents'>
-                  {(Array.isArray(career.required_skills) && career.required_skills.length > 0) ||
-                      (typeof career.required_skills === 'string' && career.required_skills.trim() !== '') ? (
+                  {
+                      (Array.isArray(career.required_skills) && career.required_skills.length > 0 && career.required_skills[0] !== null) ? 
+                      (
                         <>
                           <p>Required Skills</p>
                           <ul>
@@ -142,23 +144,26 @@ const Page = ({career, menucareer, contact, decodedId}) => {
                             ))}
                           </ul>
                         </>
-                      ) : null}
+                      ) : null
+                  }
                 </div>
                 <div className='JobDetails_job_info__fvW3O all_contents'>
-                  {(Array.isArray(career.additional_skills) && career.additional_skills.length > 0) ||
-                      (typeof career.additional_skills === 'string' && career.additional_skills.trim() !== '') ? (
-                        <>
-                          <p>Additional Skills</p>
-                          <ul>
-                            {(Array.isArray(career.additional_skills)
-                              ? career.additional_skills
-                              : career.additional_skills.split(',')
-                            ).map((skill, index) => (
-                              <li key={index}>{skill}</li>
-                            ))}
-                          </ul>
-                        </>
-                      ) : null}
+                {
+                  (Array.isArray(career.additional_skills) && career.additional_skills.length > 0 && career.additional_skills[0] !== null) ? 
+                    (
+                      <>
+                        <p>Additional Skills</p>
+                        <ul>
+                          {(Array.isArray(career.additional_skills)
+                            ? career.additional_skills
+                            : career.additional_skills.split(',')
+                          ).map((skill, index) => (
+                            <li key={index}>{skill}</li>
+                          ))}
+                        </ul>
+                      </>
+                    ) : null
+                }
                 </div>
               </div>
             </Col>

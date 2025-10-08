@@ -108,10 +108,7 @@ function Home({homeData}) {
                   </Col>
                 </Row>
               </div>
-            </div>
-
-            
-            
+            </div> 
             
           </Container>
         </section>
@@ -187,7 +184,6 @@ function Home({homeData}) {
             </Row>
           </div>
         </div>
-        
         
         <section className="tool-bg mt-5">
           <Container>
